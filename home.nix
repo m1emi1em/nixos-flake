@@ -31,6 +31,10 @@ in
   # Stable packages
   home.packages = stablePackages ++ unstablePackages;
 
+  imports = [
+    ./stuff
+  ];
+
   nixpkgs.config.packageOverrides = pkgs: {
     steam = pkgs.steam.override {
       extraPkgs = pkgs: with pkgs; [
