@@ -5,11 +5,8 @@
     noto-fonts-cjk-sans
     noto-fonts-emoji
   ];
-
- 
-  fonts = {
-    fontconfig = {
-      ultimate.enable = true;
-    };
-  };
+#   fonts = {
+#     fontconfig = {
+#     };
+#   };
 }
