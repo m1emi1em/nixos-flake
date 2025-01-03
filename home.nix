@@ -11,6 +11,7 @@ let
     prismlauncher
     signal-desktop
     duf
+    ncmpcpp
   ];
   unstablePackages = with pkgs-unstable; [
     obsidian
