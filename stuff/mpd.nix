@@ -2,7 +2,7 @@
   services.mpd = {
     enable = true;
     musicDirectory = "/home/emily/Music";
-    dataDir = "$XDG_DATA_HOME/.mpd";
+    # dataDir = "$XDG_DATA_HOME/.mpd";
     extraConfig = ''
     audio_output {
                 type "pipewire"
@@ -10,6 +10,6 @@
     }
 '';
 
-    network.startWhenNeeded = true;
+    # network.startWhenNeeded = true;
   };
 }
