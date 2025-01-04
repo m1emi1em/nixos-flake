@@ -12,7 +12,14 @@
 
     services.mpd-discord-rpc = {
       enable = true;
-      
+
+      settings = {
+        hosts = [ "localhost:6600" ];
+        format = {
+          details = "$title";
+          state = "On $album by $artist";
+        };
+      };
     };
 
     # network.startWhenNeeded = true;
