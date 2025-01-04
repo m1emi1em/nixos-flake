@@ -10,6 +10,11 @@
     }
 '';
 
+    services.mpd-discord-rpc = {
+      enable = true;
+      
+    };
+
     # network.startWhenNeeded = true;
   };
 }
