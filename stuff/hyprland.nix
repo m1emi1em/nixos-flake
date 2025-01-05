@@ -1,3 +1,4 @@
+{pkgs, ...}:
 {
-  stablePackages = [qalculate-qt];
+  home.packages = with pkgs; [qalculate-qt];
 }
