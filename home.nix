@@ -25,7 +25,7 @@ let
 
     hypridle
     hyprlock
-    hyprsysteminfo
+    #hyprsysteminfo
     hyprsunset
     
   ];
