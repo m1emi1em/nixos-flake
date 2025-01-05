@@ -15,7 +15,7 @@
   };
 
   services.mpd-discord-rpc = {
-    enable = false;
+    enable = true;
 
     settings = {
       hosts = [ "localhost:6600" ];
