@@ -1,0 +1,3 @@
+{
+  stablePackages = [qalculate-qt];
+}
