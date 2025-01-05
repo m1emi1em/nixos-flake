@@ -116,10 +116,10 @@ in
   #               type "pipewire"
   #               name "MPD (Music Player Daemon)"
   #   }
-'';
+# '';
 
     # network.startWhenNeeded = true;
-  };
+  # };
 
 
 #  home.programs.steam = {
