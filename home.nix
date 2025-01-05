@@ -12,6 +12,22 @@ let
     signal-desktop
     duf
     ncmpcpp
+
+    dunst # Notification Daemon
+    hyprpolkitagent # Auth Agent
+    waybar # Status bar
+    waypaper 
+    hyprpaper
+
+    xdg-desktop-portal-hyprland
+    wofi
+    hyprpicker
+
+    hypridle
+    hyprlock
+    hyprsysteminfo
+    hyprsunset
+    
   ];
   unstablePackages = with pkgs-unstable; [
     obsidian
