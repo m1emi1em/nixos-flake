@@ -1,3 +1,4 @@
+{pkgs-unstable, ...}:
 {
   services.mpd = {
     enable = true;
@@ -25,4 +26,6 @@
       };
     };
   };
+
+  home.packages = [ pkgs-unstable.rmpc ];
 }
