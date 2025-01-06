@@ -3,8 +3,11 @@
   home.packages = with pkgs-unstable; [ kitty ];
 
   programs.kitty = {
-    enableBashIntegration = true;
-    enableFishIntegration = true;
+    shellIntegration = {
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+      enableZshIntegration = true;
+    };
     themeFile = "Catppuccin-Mocha";
 
     settings = {
