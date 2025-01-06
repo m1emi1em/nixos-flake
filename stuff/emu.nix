@@ -1,6 +1,6 @@
-{pkgs-unstable, ...}:
+{pkgs, ...}:
 {
-  home.packages = with pkgs-unstable; [
-    retroarch-full
-  ];
+  # home.packages = with pkgs; [
+  #   retroarchFull
+  # ];
 }
