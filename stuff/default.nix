@@ -4,5 +4,6 @@
     ./hyprland.nix
     ./term.nix
     ./emu.nix
+    
   ];
 }
