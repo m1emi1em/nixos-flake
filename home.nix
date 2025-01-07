@@ -39,6 +39,7 @@ let
     ghostty
     yazi
     godot_4
+    aseprite
   ];
 in
 {
