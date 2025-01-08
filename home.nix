@@ -29,6 +29,7 @@ let
     hyprsunset
     
 
+    mpris-timer
   ];
   unstablePackages = with pkgs-unstable; [
     obsidian
