@@ -43,7 +43,6 @@ let
     yazi
     godot_4
     aseprite
-    shadps4
   ];
 in
 {
