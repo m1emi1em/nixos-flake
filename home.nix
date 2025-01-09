@@ -43,6 +43,7 @@ let
     yazi
     godot_4
     aseprite
+    yt-dlp
   ];
 in
 {
