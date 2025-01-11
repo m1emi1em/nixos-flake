@@ -1,6 +1,6 @@
 {
   imports = [
     ./clj.nix
-    #./js.nix
+    ./js.nix
   ];
 }
