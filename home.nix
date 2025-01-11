@@ -46,6 +46,9 @@ let
     yt-dlp
 
     charm-freeze # Dev
+
+    gamescope
+    mangohud
   ];
 in
 {
