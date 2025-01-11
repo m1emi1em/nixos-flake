@@ -60,6 +60,7 @@ in
 
   imports = [
     ./stuff
+    ./dev
   ];
 
   nixpkgs.config.packageOverrides = pkgs: {
