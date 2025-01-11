@@ -44,6 +44,8 @@ let
     godot_4
     aseprite
     yt-dlp
+
+    charm-freeze # Dev
   ];
 in
 {
