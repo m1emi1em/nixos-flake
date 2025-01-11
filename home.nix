@@ -34,9 +34,9 @@ let
   unstablePackages = with pkgs-unstable; [
     obsidian
     alacritty
-    leiningen
-    babashka
-    clojure
+    # leiningen
+    # babashka
+    # clojure
     lutris
     pfetch
     ghostty
