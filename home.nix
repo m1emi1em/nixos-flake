@@ -44,6 +44,7 @@ let
     godot_4
     aseprite
     yt-dlp
+    reaper
 
     charm-freeze # Dev
 
