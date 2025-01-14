@@ -34,6 +34,8 @@
         ./configuration.nix
         ./fonts.nix
 
+        ./sys/desktop.nix
+
         # home-manager
         home-manager.nixosModules.home-manager
         {
