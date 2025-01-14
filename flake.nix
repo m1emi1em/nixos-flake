@@ -17,7 +17,7 @@
 
   };
 
-  outputs = { self, nixpkgs, home-manager, nixpkgs-unstable, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixpkgs-unstable, ... } @ inputs:
   let 
     system = "x86_64-linux";
     #pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
@@ -28,6 +28,13 @@
     nixosConfigurations.Emerald = nixpkgs.lib.nixosSystem {
       #system = "x86_64-linux";
       #inherit system;
+      specialArgs = {
+        inherit inputs;
+        #system = "x86_64-linux";
+      };
+
+      
+      
       modules = [
         # Import the previous configuration.nix we used,
         # so the old configuration file still takes effect
@@ -52,6 +59,11 @@
         }
 
         ({nixpkgs, inputs, home-manager, ...}: {
+          # home-manager.nixosModules.home-manager = {
+          #   extraSpecialArgs = {
+          #     inherit inputs;
+          #   };
+          # };
           imports = [
             ./home/testificate
           ];
