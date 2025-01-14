@@ -51,6 +51,12 @@
           home-manager.users.emily = import ./home.nix;
         }
 
+        ({nixpkgs, inputs, home-manager, ...}: {
+          imports = [
+            ./home/testificate
+          ];
+        })
+
       ];
 
     };
