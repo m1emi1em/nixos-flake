@@ -12,18 +12,18 @@
 
   #nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  nix.settings = {
-    experimental-features = ["nix-command" "flakes"];
-    #substituters = ["https://hyprland.cachix.org"];
-    #trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
-  };
+  # nix.settings = {
+  #   experimental-features = ["nix-command" "flakes"];
+  #   #substituters = ["https://hyprland.cachix.org"];
+  #   #trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+  # };
 
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  # boot.loader.systemd-boot.enable = true;
+  # boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "Emerald"; # Define your hostname.
+  #networking.hostName = "Emerald"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -31,25 +31,25 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  #networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "America/New_York";
+  # time.timeZone = "America/New_York";
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+  # # Select internationalisation properties.
+  # i18n.defaultLocale = "en_US.UTF-8";
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
+  # i18n.extraLocaleSettings = {
+  #   LC_ADDRESS = "en_US.UTF-8";
+  #   LC_IDENTIFICATION = "en_US.UTF-8";
+  #   LC_MEASUREMENT = "en_US.UTF-8";
+  #   LC_MONETARY = "en_US.UTF-8";
+  #   LC_NAME = "en_US.UTF-8";
+  #   LC_NUMERIC = "en_US.UTF-8";
+  #   LC_PAPER = "en_US.UTF-8";
+  #   LC_TELEPHONE = "en_US.UTF-8";
+  #   LC_TIME = "en_US.UTF-8";
+  # };
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
@@ -69,20 +69,20 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+  # hardware.pulseaudio.enable = false;
+  # security.rtkit.enable = true;
+  # services.pipewire = {
+  #   enable = true;
+  #   alsa.enable = true;
+  #   alsa.support32Bit = true;
+  #   pulse.enable = true;
+  #   # If you want to use JACK applications, uncomment this
+  #   #jack.enable = true;
 
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
+  #   # use the example session manager (no others are packaged yet so this is enabled by default,
+  #   # no need to redefine it in your config for now)
+  #   #media-session.enable = true;
+  # };
 
   #services.pipewire.extraConfig.pipewire."92-low-latency" = {
   #  "context.properties" = {
@@ -209,34 +209,34 @@
 #    enable = true;
 #  };
 
-  hardware.graphics = {
-    enable = true;
-  };
+  # hardware.graphics = {
+  #   enable = true;
+  # };
 
 
-  services.xserver.videoDrivers = ["nvidia"];
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
-    open = false;
-    nvidiaSettings = true;
+  # services.xserver.videoDrivers = ["nvidia"];
+  # hardware.nvidia = {
+  #   modesetting.enable = true;
+  #   powerManagement.enable = false;
+  #   powerManagement.finegrained = false;
+  #   open = false;
+  #   nvidiaSettings = true;
 
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
+  #   package = config.boot.kernelPackages.nvidiaPackages.stable;
+  # };
 
-  boot.supportedFilesystems = [ "ntfs" ];
+  # boot.supportedFilesystems = [ "ntfs" ];
 
-  fileSystems."/mnt/BiggusDiskus" = {
-    device = "/dev/nvme0n1p2";
-    fsType = "ntfs-3g";
-    options = [
-      "users" 
-      "nofail"
-      "rw"
-      "exec"
-    ];
-  };
+  # fileSystems."/mnt/BiggusDiskus" = {
+  #   device = "/dev/nvme0n1p2";
+  #   fsType = "ntfs-3g";
+  #   options = [
+  #     "users" 
+  #     "nofail"
+  #     "rw"
+  #     "exec"
+  #   ];
+  # };
 
   # hyprland
   programs.hyprland.enable = true;
@@ -246,23 +246,23 @@
 
   users.defaultUserShell = pkgs.fish;
 
-  virtualisation.oci-containers.containers = {
-    "gitea" = {
-      autoStart = true;
-      image = "gitea/gitea";
-      ports = [ "32769:22" "32768:3000"];
-      environment = {
-        #USER_UID = "1000";
-        #USER_GID = "1000";
-        USER = "git";
-        GITEA_CUSTOM = "/data/gitea";
-      };
-      volumes = [
-        "/home/volumes/gitea/data:/data"
-        "/etc/timezone:/etc/timezone:ro"
-        "/etc/localtime:/etc/localtime:ro"
-      ];
-    };
+  # virtualisation.oci-containers.containers = {
+  #   "gitea" = {
+  #     autoStart = true;
+  #     image = "gitea/gitea";
+  #     ports = [ "32769:22" "32768:3000"];
+  #     environment = {
+  #       #USER_UID = "1000";
+  #       #USER_GID = "1000";
+  #       USER = "git";
+  #       GITEA_CUSTOM = "/data/gitea";
+  #     };
+  #     volumes = [
+  #       "/home/volumes/gitea/data:/data"
+  #       "/etc/timezone:/etc/timezone:ro"
+  #       "/etc/localtime:/etc/localtime:ro"
+  #     ];
+    # };
 
     #"freshrss" = {
     #  autoStart = true;
@@ -273,7 +273,7 @@
     #};
 
     
-  };
+  # };
 
 
   # Some programs need SUID wrappers, can be configured further or are
