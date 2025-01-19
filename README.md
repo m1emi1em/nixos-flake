@@ -1,5 +1,3 @@
-# NixOS
+# m1emi1em's NixOS configs
 
-NixOS Configs
-
-Will this work do u work yet u work?
+This is a terrible flake, do not use it. I legitimately have no idea what I'm doing. 
