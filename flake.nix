@@ -20,8 +20,8 @@
   outputs = { self, nixpkgs, home-manager, nixpkgs-unstable, ... } @ inputs:
   let 
     system = "x86_64-linux";
-    #pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
-    pkgs-unstable = import nixpkgs-unstable {inherit system; config.allowUnfree = true; };
+    pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
+    #pkgs-unstable = import nixpkgs-unstable {inherit system; config.allowUnfree = true; };
     pkgs = nixpkgs.legacyPackages.${system};
 
     forAllSystems =
@@ -57,6 +57,7 @@
         ./fonts.nix
 
         ./sys/desktop.nix
+        ./nixpkgs.nix
 
         # home-manager
         home-manager.nixosModules.home-manager 
