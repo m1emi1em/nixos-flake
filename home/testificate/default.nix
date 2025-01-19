@@ -1,4 +1,4 @@
-{pkgs, home-manager, inputs, ...}:
+{pkgs, home-manager, inputs, proper-pkgs-unstable, ...}:
 let
   myUserName = "testificate";
   myHomeDir = "/home/" + myUserName; 
@@ -12,9 +12,8 @@ in
   };
 
   home-manager.users.testificate =
-    ({pkgs, inputs, ...}: 
+    ({pkgs, inputs, proper-pkgs-unstable, ...}: 
       let
-        #proper-pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
         stablePackages = with pkgs; [
           charm-freeze
         ];

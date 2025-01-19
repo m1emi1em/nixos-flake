@@ -22,8 +22,23 @@
     system = "x86_64-linux";
     #pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
     pkgs-unstable = import nixpkgs-unstable {inherit system; config.allowUnfree = true; };
+    pkgs = nixpkgs.legacyPackages.${system};
+
+    forAllSystems =
+      function:
+      nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed (
+        system: function (
+          import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          }
+        )
+      );
   in
   {
+
+    pkgs.config.allowUnfree = true;
+    
     # Please replace my-nixos with your hostname
     nixosConfigurations.Emerald = nixpkgs.lib.nixosSystem {
       #system = "x86_64-linux";
@@ -44,19 +59,25 @@
         ./sys/desktop.nix
 
         # home-manager
-        home-manager.nixosModules.home-manager
-        {
+        home-manager.nixosModules.home-manager 
+          {
 
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
 
-          # Shenanigans for unstable packages
-          home-manager.extraSpecialArgs = { inherit pkgs-unstable; };
+            # Shenanigans for unstable packages
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              inherit pkgs-unstable;
+              proper-pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
+              
+            };
 
 
-          # Personal account
-          home-manager.users.emily = import ./home.nix;
-        }
+            # Personal account
+            home-manager.users.emily = import ./home.nix;
+          }
+        
 
         ({nixpkgs, inputs, home-manager, ...}: {
           # home-manager.nixosModules.home-manager = {
