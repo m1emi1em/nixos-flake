@@ -4,5 +4,6 @@
     ./js.nix
     ./java.nix
     ./lisp.nix
+    ./rust.nix
   ];
 }
