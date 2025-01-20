@@ -48,6 +48,7 @@
         ./fonts.nix
 
         ./sys/desktop.nix
+        ./sys/default.nix
         ./nixpkgs.nix
 
         # home-manager
