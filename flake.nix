@@ -39,7 +39,7 @@
         {
 
           home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
+          home-manager.useUserPackages = false;
 
           # Shenanigans for unstable packages
           home-manager.extraSpecialArgs = { inherit pkgs-unstable; };
