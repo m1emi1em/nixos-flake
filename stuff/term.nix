@@ -1,8 +1,9 @@
-{pkgs-unstable, ...}:
+{pkgs, ...}:
 {
-  home.packages = with pkgs-unstable; [ kitty ];
+  home.packages = with pkgs; [ kitty ];
 
   programs.kitty = {
+    enable = true;
     shellIntegration = {
       enableBashIntegration = true;
       enableFishIntegration = true;
