@@ -67,7 +67,7 @@
             };
 
             # Personal account
-            home-manager.users.emily = import ./home.nix;
+            home-manager.users.emily = ./home.nix;
           }
         
         ({nixpkgs, inputs, home-manager, ...}: {
