@@ -13,41 +13,68 @@
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-
   };
 
-  outputs = { self, nixpkgs, home-manager, nixpkgs-unstable, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixpkgs-unstable, ... } @ inputs:
   let 
     system = "x86_64-linux";
-    #pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
     pkgs-unstable = import nixpkgs-unstable {inherit system; config.allowUnfree = true; };
+    pkgs = nixpkgs.legacyPackages.${system};
+
+    # idk how to use this :3
+    forAllSystems =
+      function:
+      nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed (
+        system: function (
+          import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          }
+        )
+      );
   in
   {
     # Please replace my-nixos with your hostname
     nixosConfigurations.Emerald = nixpkgs.lib.nixosSystem {
-      #system = "x86_64-linux";
-      #inherit system;
+      specialArgs = {
+        inherit inputs;
+      };
+
       modules = [
         # Import the previous configuration.nix we used,
         # so the old configuration file still takes effect
+        ./hardware-configuration.nix 
         ./configuration.nix
         ./fonts.nix
 
+        ./sys/desktop.nix
+        ./sys/default.nix
+        ./nixpkgs.nix
+
         # home-manager
-        home-manager.nixosModules.home-manager
-        {
+        home-manager.nixosModules.home-manager 
+          {
 
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = false;
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
 
-          # Shenanigans for unstable packages
-          home-manager.extraSpecialArgs = { inherit pkgs-unstable; };
+            # Shenanigans for unstable packages
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              inherit pkgs-unstable;
+              proper-pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
+              
+            };
 
-
-          # Personal account
-          home-manager.users.emily = import ./home.nix;
-        }
+            # Personal account
+            home-manager.users.emily = import ./home.nix;
+          }
+        
+        ({nixpkgs, inputs, home-manager, ...}: {
+          imports = [
+            ./home/testificate
+          ];
+        })
 
       ];
 

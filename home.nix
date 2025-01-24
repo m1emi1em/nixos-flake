@@ -1,4 +1,4 @@
-{config, pkgs, pkgs-unstable, ...} :
+{config, pkgs, inputs, pkgs-unstable, ...} :
 let 
   stablePackages = with pkgs; [ 
     hyfetch
