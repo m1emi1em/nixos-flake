@@ -35,10 +35,7 @@
     #media-session.enable = true;
   };
 
-  hardware = {
-    graphics.enable = true;
-    opengl.enable = true;
-  };
+  hardware.graphics.enable = true;
 
   services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia = {
@@ -51,8 +48,4 @@
     package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
 
-  environment.systemPackages = with pkgs; [
-    figlet
-    lolcat
-  ];
 }

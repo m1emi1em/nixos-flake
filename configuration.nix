@@ -33,57 +33,16 @@
     packages = with pkgs; [
       kdePackages.kate
       keepassxc
-      #obsidian
-      #vesktop
-      #neofetch
-    #  thunderbird
     ];
   };
 
   # Install firefox.
   programs.firefox.enable = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    git
-    wget
-    #neovim # We explicitly install and configure neovim system-wide below
-    bat
-    btop
-    htop
-    ranger
-    unzip
-    tmux
-    dua
-    swayfx
-    wofi
-    just
-    kitty
-    p7zip
-  #  wget
-  ];
-
-
   environment.shellAliases = {
     nv = "nvim";
   };
 
-  programs.neovim = {
-    enable = true;
-    configure = {
-      customRC = ''
-        nnoremap ; :
-        set number
-        set relativenumber
-        set expandtab
-        set shiftwidth=2
-    '';
-    };
-    viAlias = true;
-    vimAlias = true;
-    defaultEditor =  true;
-  };
 
   programs.steam = {
     enable = true;
