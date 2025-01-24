@@ -1,9 +1,8 @@
-{pkgs-unstable, ...}:
+{config, pkgs-unstable, ...}:
 {
   services.mpd = {
     enable = true;
-    musicDirectory = "/home/emily/Music";
-    # dataDir = "$XDG_DATA_HOME/.mpd";
+    musicDirectory = "${config.xdg.userDirs.music}";
     extraConfig = ''
     audio_output {
                 type "pipewire"
