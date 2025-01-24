@@ -43,9 +43,6 @@
   # Install firefox.
   programs.firefox.enable = true;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -95,63 +92,8 @@
     localNetworkGameTransfers.openFirewall = true;
   };
 
-#  hardware.opengl = {
-#    enable = true;
-#  };
-
-  # hardware.graphics = {
-  #   enable = true;
-  # };
-  # boot.supportedFilesystems = [ "ntfs" ];
-
-  # fileSystems."/mnt/BiggusDiskus" = {
-  #   device = "/dev/nvme0n1p2";
-  #   fsType = "ntfs-3g";
-  #   options = [
-  #     "users" 
-  #     "nofail"
-  #     "rw"
-  #     "exec"
-  #   ];
-  # };
-
   # hyprland
   programs.hyprland.enable = true;
-
-  # feesh
-  programs.fish.enable = true;
-
-  users.defaultUserShell = pkgs.fish;
-
-  # virtualisation.oci-containers.containers = {
-  #   "gitea" = {
-  #     autoStart = true;
-  #     image = "gitea/gitea";
-  #     ports = [ "32769:22" "32768:3000"];
-  #     environment = {
-  #       #USER_UID = "1000";
-  #       #USER_GID = "1000";
-  #       USER = "git";
-  #       GITEA_CUSTOM = "/data/gitea";
-  #     };
-  #     volumes = [
-  #       "/home/volumes/gitea/data:/data"
-  #       "/etc/timezone:/etc/timezone:ro"
-  #       "/etc/localtime:/etc/localtime:ro"
-  #     ];
-    # };
-
-    #"freshrss" = {
-    #  autoStart = true;
-    #  image = "";
-    #  ports = [];
-    #  volumes = [
-    #  ];
-    #};
-
-    
-  # };
-
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

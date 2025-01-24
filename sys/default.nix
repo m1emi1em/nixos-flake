@@ -26,4 +26,8 @@
   };
 
   boot.supportedFilesystems = [ "ntfs" ];
+
+  # feesh
+  programs.fish.enable = true;
+  users.defaultUserShell = pkgs.fish;
 }

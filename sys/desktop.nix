@@ -35,8 +35,9 @@
     #media-session.enable = true;
   };
 
-  hardware.graphics = {
-    enable = true;
+  hardware = {
+    graphics.enable = true;
+    opengl.enable = true;
   };
 
   services.xserver.videoDrivers = ["nvidia"];
