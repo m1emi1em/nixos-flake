@@ -1,7 +1,7 @@
 {
   imports = [
     ./git.nix
-    ./lang
+    #./lang
   ];
 
   programs = {
