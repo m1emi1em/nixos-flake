@@ -49,6 +49,9 @@
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
+    #platformOptimizations.enable = true;
+    protontricks.enable = true;
+    
   };
 
   # hyprland

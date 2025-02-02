@@ -3,7 +3,7 @@ let
   stablePackages = with pkgs; [ 
     hyfetch
     emacs
-    steam
+    #steam
     mpv
     discord
     vesktop
@@ -62,22 +62,22 @@ in
     ./lang
   ];
 
-  nixpkgs.config.packageOverrides = pkgs: {
-    steam = pkgs.steam.override {
-      extraPkgs = pkgs: with pkgs; [
-        xorg.libXcursor
-        xorg.libXi
-        xorg.libXinerama
-        xorg.libXScrnSaver
-        libpng
-        libpulseaudio
-        libvorbis
-        stdenv.cc.cc.lib
-        libkrb5
-        keyutils
-      ];
-    };
-  };
+  # nixpkgs.config.packageOverrides = pkgs: {
+  #   steam = pkgs.steam.override {
+  #     extraPkgs = pkgs: with pkgs; [
+  #       xorg.libXcursor
+  #       xorg.libXi
+  #       xorg.libXinerama
+  #       xorg.libXScrnSaver
+  #       libpng
+  #       libpulseaudio
+  #       libvorbis
+  #       stdenv.cc.cc.lib
+  #       libkrb5
+  #       keyutils
+  #     ];
+  #   };
+  # };
 
 
 
