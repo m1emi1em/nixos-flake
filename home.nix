@@ -30,6 +30,10 @@ let
     
 
     mpris-timer
+
+
+    irssi
+    flameshot
   ];
   unstablePackages = with pkgs-unstable; [
     obsidian
