@@ -34,6 +34,7 @@ let
 
     irssi
     flameshot
+    ungoogled-chromium
   ];
   unstablePackages = with pkgs-unstable; [
     obsidian
