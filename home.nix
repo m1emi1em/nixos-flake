@@ -39,6 +39,8 @@ let
     anki # gui
     qbittorrent # gui, server?
     picard # server
+
+    spotify # gui
   ];
   unstablePackages = with pkgs-unstable; [
     obsidian # gui
