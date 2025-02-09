@@ -37,7 +37,7 @@ let
     ungoogled-chromium
 
     anki
-    qbittorent
+    qbittorrent
     picard
   ];
   unstablePackages = with pkgs-unstable; [
