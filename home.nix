@@ -35,6 +35,10 @@ let
     irssi
     flameshot
     ungoogled-chromium
+
+    anki
+    qbittorent
+    picard
   ];
   unstablePackages = with pkgs-unstable; [
     obsidian
