@@ -1,61 +1,61 @@
 {config, pkgs, inputs, pkgs-unstable, ...} :
 let 
   stablePackages = with pkgs; [ 
-    hyfetch
-    emacs
+    hyfetch # gui
+    emacs # gui, wsl, server?
     #steam
-    mpv
-    discord
-    vesktop
-    keepassxc
-    prismlauncher
-    signal-desktop
-    duf
-    ncmpcpp
+    mpv # gui
+    discord # gui
+    vesktop # gui
+    keepassxc # gui
+    prismlauncher # gui
+    signal-desktop # gui
+    duf # util
+    ncmpcpp # gui
 
-    dunst # Notification Daemon
-    hyprpolkitagent # Auth Agent
-    waybar # Status bar
-    waypaper 
+    dunst # Notification Daemon # gui
+    hyprpolkitagent # Auth Agent # gui
+    waybar # Status bar # gui
+    waypaper  # gui
     hyprpaper
 
-    xdg-desktop-portal-hyprland
-    wofi
-    hyprpicker
+    xdg-desktop-portal-hyprland # gui
+    wofi # gui
+    hyprpicker # gui
 
-    hypridle
-    hyprlock
+    hypridle # gui
+    hyprlock # gui
     #hyprsysteminfo
-    hyprsunset
+    hyprsunset # gui
     
 
-    mpris-timer
+    mpris-timer # gui
 
 
-    irssi
-    flameshot
-    ungoogled-chromium
+    irssi # gui, wsl
+    flameshot # gui
+    ungoogled-chromium # gui
 
-    anki
-    qbittorrent
-    picard
+    anki # gui
+    qbittorrent # gui, server?
+    picard # server
   ];
   unstablePackages = with pkgs-unstable; [
-    obsidian
-    alacritty
-    lutris
-    pfetch
+    obsidian # gui
+    alacritty # gui
+    lutris # gui
+    pfetch # util
     ghostty
-    yazi
-    godot_4
-    aseprite
-    yt-dlp
-    reaper
+    yazi # util
+    godot_4 # gui
+    aseprite # gui
+    yt-dlp # util
+    reaper # gui
 
-    charm-freeze # Dev
+    charm-freeze # util
 
-    gamescope
-    mangohud
+    gamescope # gui
+    mangohud  # gui
   ];
 in
 {
