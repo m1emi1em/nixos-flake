@@ -22,6 +22,7 @@
     just
     kitty
     p7zip
+    tealdeer
   #  wget
   ];
 }
