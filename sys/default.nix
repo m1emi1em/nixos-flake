@@ -30,7 +30,12 @@
     };
   };
 
-  boot.supportedFilesystems = [ "ntfs" ];
+  networking.hostId = "7210d2a7";
+  boot= {
+    supportedFilesystems = [ "ntfs" "zfs"];
+    zfs.forceImportRoot = false;
+  };
+  
 
   # feesh
   programs.fish.enable = true;
