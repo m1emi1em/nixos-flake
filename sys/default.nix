@@ -31,14 +31,46 @@
     };
   };
 
-  networking.hostId = "7210d2a7";
   boot= {
-    supportedFilesystems = [ "ntfs" "zfs"];
-    zfs.forceImportRoot = false;
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+    
+    supportedFilesystems = [ "ntfs" ];
   };
   
 
   # feesh
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
+  networking.networkmanager.enable = true;
+  
+  # pipewire
+  services.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+
+    # use the example session manager (no others are packaged yet so this is enabled by default,
+    # no need to redefine it in your config for now)
+    #media-session.enable = true;
+  };
+
+  hardware.graphics.enable = true;
+  services.xserver.videoDrivers = ["nvidia"];
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    powerManagement.finegrained = false;
+    open = false;
+    nvidiaSettings = true;
+
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
+  };
 }
