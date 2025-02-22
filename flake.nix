@@ -2,17 +2,20 @@
   description = "m1emi1em NixOS Flake";
 
   inputs = {
-    # NixOS official package source, using the nixos-24.11 branch here
-    #nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
 
-    # Unstable package sources
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # home-manager
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    easy-hosts.url = "github:tgirlcloud/easy-hosts";
   };
 
   outputs = { self, nixpkgs, home-manager, ... } @ inputs:
