@@ -2,6 +2,7 @@
 {
   imports = [
     ./cli
+    ./services.nix
   ];
 
   

@@ -1,6 +1,6 @@
-{config, pkgs, inputs, pkgs-unstable, ...} :
+{config, pkgs, inputs, ...} :
 let 
-  stablePackages = with pkgs; [ 
+  unstablePackages = with pkgs; [
     hyfetch # gui
     emacs # gui, wsl, server?
     #steam
@@ -41,8 +41,8 @@ let
     picard # server
 
     spotify # gui
-  ];
-  unstablePackages = with pkgs-unstable; [
+    zoom-us # gui
+
     obsidian # gui
     alacritty # gui
     lutris # gui
@@ -65,7 +65,7 @@ in
   home.homeDirectory = "/home/emily";
 
   # Stable packages
-  home.packages = stablePackages ++ unstablePackages;
+  home.packages = unstablePackages;
 
   imports = [
     ./stuff

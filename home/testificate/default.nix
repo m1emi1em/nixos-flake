@@ -1,4 +1,4 @@
-{pkgs, home-manager, inputs, proper-pkgs-unstable, ...}:
+{pkgs, home-manager, inputs, ...}:
 let
   myUserName = "testificate";
   myHomeDir = "/home/" + myUserName; 
@@ -12,20 +12,15 @@ in
   };
 
   home-manager.users.testificate =
-    ({pkgs, inputs, proper-pkgs-unstable, ...}: 
-      let
-        stablePackages = with pkgs; [
-          charm-freeze
-        ];
-        unstablePackages = with proper-pkgs-unstable; [
-          pfetch
-        ];
-      in
+    ({pkgs, inputs, ...}: 
         {
 
           home = {
             stateVersion = "24.11";
-            packages = stablePackages ++ unstablePackages;
+            packages = with pkgs; [
+              charm-freeze
+              pfetch
+            ];
           };
 
           programs = {

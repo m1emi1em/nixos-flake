@@ -23,6 +23,7 @@
     kitty
     p7zip
     tealdeer
+    tree
   #  wget
   ];
 }

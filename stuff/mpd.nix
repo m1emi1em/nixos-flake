@@ -1,4 +1,4 @@
-{config, pkgs-unstable, ...}:
+{config, pkgs, ...}:
 {
   services = {
     mpd = {
@@ -37,6 +37,6 @@
     };
   };
 
-  home.packages = [ pkgs-unstable.rmpc ];
+  home.packages = [ pkgs.rmpc ];
 }
   
