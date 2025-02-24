@@ -71,6 +71,7 @@ in
     ./stuff
     ./dev
     ./lang
+    ./home/emily
   ];
 
   # nixpkgs.config.packageOverrides = pkgs: {
