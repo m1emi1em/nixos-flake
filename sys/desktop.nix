@@ -24,6 +24,10 @@
   services = {
     syncthing = {
       settings = {
+        devices = {
+          "quartz" = { id = "EJ7G7LI-7XLJ6PB-AID7I75-WQ2PYAY-V42GMIN-GYBSLDS-BRIETL7-4CFLSQ7"; };
+        };
+        
         folders = {
           "Obsidian" = {
             id = "obsidian-vaults-current";
