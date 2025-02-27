@@ -58,6 +58,10 @@ let
 
     gamescope # gui
     mangohud  # gui
+
+
+    piper # gui
+    # libratbag # gui
   ];
 in
 {
