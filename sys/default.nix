@@ -73,4 +73,6 @@
 
     package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
+
+  services.ratbagd.enable = true;
 }

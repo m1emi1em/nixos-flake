@@ -16,9 +16,11 @@
     };
 
     easy-hosts.url = "github:tgirlcloud/easy-hosts";
+
+    agenix.url = "github:ryantm/agenix";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
+  outputs = { self, nixpkgs, home-manager, agenix, ... } @ inputs:
     let 
       system = "x86_64-linux";
       #pkgs-unstable = import nixpkgs-unstable {inherit system; config.allowUnfree = true; };
@@ -78,6 +80,10 @@
                 ./home/testificate
               ];
             })
+
+            agenix.nixosModules.default
+
+            { environment.systemPackages = [ agenix.packages.${system}.default ]; }
 
           ];
 

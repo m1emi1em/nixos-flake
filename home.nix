@@ -45,6 +45,10 @@ let
 
     gamescope # gui
     mangohud  # gui
+
+
+    piper # gui
+    # libratbag # gui
   ];
 in
 {
@@ -58,6 +62,7 @@ in
     ./stuff
     ./dev
     ./lang
+    ./home/emily
   ];
 
   # nixpkgs.config.packageOverrides = pkgs: {
