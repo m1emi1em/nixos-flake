@@ -32,7 +32,7 @@
           "Obsidian" = {
             id = "obsidian-vaults-current";
             path = "/mnt/BiggusDiskus/Vaults/Current";
-            devices = ["Bismuth"];
+            devices = ["Bismuth" "quartz"];
           };
         };
       };
