@@ -39,7 +39,6 @@ let
     aseprite # gui
     yt-dlp # util
     reaper # gui
-    logseq # gui
 
     charm-freeze # util
 
