@@ -13,21 +13,7 @@ let
     duf # util
     ncmpcpp # gui
 
-    dunst # Notification Daemon # gui
-    hyprpolkitagent # Auth Agent # gui
-    waybar # Status bar # gui
-    waypaper  # gui
-    hyprpaper
 
-    xdg-desktop-portal-hyprland # gui
-    wofi # gui
-    hyprpicker # gui
-
-    hypridle # gui
-    hyprlock # gui
-    #hyprsysteminfo
-    hyprsunset # gui
-    
 
     mpris-timer # gui
 

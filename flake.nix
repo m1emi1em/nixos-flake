@@ -95,11 +95,12 @@
           };
 
           modules = [
-            ./hardware-configuration.nix
+            ./quartz.nix
             ./configuration.nix
             ./fonts.nix
 
             ./sys/default.nix
+            ./sys/laptop.nix
             ./nixpkgs.nix
 
             # home-manager
