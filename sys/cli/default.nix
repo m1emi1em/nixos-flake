@@ -25,5 +25,6 @@
     tealdeer
     tree
   #  wget
+    ripgrep
   ];
 }
