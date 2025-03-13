@@ -40,7 +40,7 @@
     in
       {
         # Please replace my-nixos with your hostname
-        nixosConfigurations.Emerald = nixpkgs.lib.nixosSystem {
+        nixosConfigurations.emerald = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
           };
@@ -48,15 +48,20 @@
           modules = [
             # Import the previous configuration.nix we used,
             # so the old configuration file still takes effect
-            ./hardware-configuration.nix 
-            ./configuration.nix
-            ./fonts.nix
+            #./hardware-configuration.nix 
+            #./configuration.nix
+            #./fonts.nix
 
-            ./sys/default.nix
-            ./sys/desktop.nix
-            ./nixpkgs.nix
+            # ./sys/default.nix
+            #./sys/desktop.nix
+            #./nixpkgs.nix
 
             # home-manager
+
+            ./base-system.nix
+            ./desktop.nix
+            ./systems/emerald/hardware-configuration.nix
+            
             home-manager.nixosModules.home-manager 
             {
 
@@ -95,13 +100,17 @@
           };
 
           modules = [
-            ./quartz.nix
-            ./configuration.nix
-            ./fonts.nix
+            # ./quartz.nix
+            # ./configuration.nix
+            # ./fonts.nix
 
-            ./sys/default.nix
-            ./sys/laptop.nix
-            ./nixpkgs.nix
+            # ./sys/default.nix
+            # ./sys/laptop.nix
+            # ./nixpkgs.nix
+            
+            ./base-system.nix
+            ./laptop.nix
+            ./systems/quartz/hardware-configuration.nix
 
             # home-manager
             home-manager.nixosModules.home-manager 

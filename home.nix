@@ -74,6 +74,8 @@ let
 
     rmpc
     kitty
+    networkmanagerapplet
+    grimblast
   ];
 in
 {
@@ -323,5 +325,15 @@ ClearPasswordAfter=30'';
         WantedBy = [ "timers.target" ];
       };
     };
+  };
+
+  wayland.windowManager.hyprland = {
+    enable = true;
+    systemd.enable = false;
+
+    # Bite me
+    extraConfig = ''
+source = ~/.config/hypr/hyprland_1.conf
+'';
   };
 }
