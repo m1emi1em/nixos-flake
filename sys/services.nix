@@ -9,7 +9,7 @@
       settings = {
         gui = {
           user = "emily";
-          password = "incorrectgoatringtwormtassel";
+          password = "don'tfuuckingcommitthispasswordyoubsolutefool";
         };
 
         devices = {

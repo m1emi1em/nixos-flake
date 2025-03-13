@@ -50,6 +50,30 @@ let
     # libratbag # gui
 
     libnotify # gui
+
+    pandoc
+    texlive.combined.scheme-full
+
+    osu-lazer-bin
+    
+    hyprpolkitagent # Auth Agent # gui
+    hyprpaper
+    dunst # Notification Daemon # gui
+    waybar # Status bar # gui
+    waypaper  # gui
+
+    xdg-desktop-portal-hyprland # gui
+    wofi # gui
+    hyprpicker # gui
+
+    hypridle # gui
+    hyprlock # gui
+    #hyprsysteminfo
+    hyprsunset # gui
+
+
+    rmpc
+    kitty
   ];
 in
 {
@@ -60,10 +84,8 @@ in
   home.packages = unstablePackages;
 
   imports = [
-    ./stuff
-    ./dev
-    ./lang
-    ./home/emily
+    # ./lang
+    # ./home/emily
   ];
 
   # nixpkgs.config.packageOverrides = pkgs: {
@@ -162,4 +184,144 @@ in
 
   home.stateVersion = "24.11";
   programs.home-manager.enable = true;
+  
+  ########################################################################
+  # everything from here is me stuffing this all into ONE file (for now) #
+  ########################################################################
+
+  #############
+  # from dev/ #
+  #############
+
+  programs = {
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+    git = {
+      enable = true;
+      userName = "m1emi1em";
+      userEmail = "m1emi1em@proton.me";
+
+      extraConfig = {
+        init.defaultBranch = "main";
+      };
+    };
+  };
+
+  ###############
+  # from stuff/ #
+  ###############
+
+  services = {
+    mpd = {
+      enable = true;
+      musicDirectory = "${config.xdg.userDirs.music}";
+      extraConfig = ''
+    audio_output {
+                type "pipewire"
+                name "MPD (Music Player Daemon)"
+    }
+'';
+      network.startWhenNeeded = true;
+    };
+
+    mpd-discord-rpc = {
+      enable = true;
+      settings = {
+        hosts = [ "localhost:6600" ];
+        format = {
+          details = "$title";
+          state = "On $album by $artist";
+        };
+      };
+    };
+
+    mpd-mpris = {
+      enable = true;
+      mpd = {
+        useLocal = true;
+      };
+    };
+
+    mpdris2 = {
+      enable = true;
+      notifications = true;
+    };
+  };
+
+  programs.kitty = {
+    enable = true;
+    themeFile = "Catppuccin-Mocha";
+
+    settings = {
+      enable_audio_bell = false;
+      confirm_os_window_close = 0;
+    };
+  };
+
+  ##############
+  # from lang/ #
+  ##############
+  
+  home.file = {
+    ".config/fcitx5/conf/clipboard.conf" = {
+      text = ''# Trigger Key
+TriggerKey=
+# Paste Primary
+PastePrimaryKey=
+# Number of entries
+Number of entries=3
+# Do not show password from password managers
+IgnorePasswordFromPasswordManager=True
+# Hidden clipboard content that contains a password
+ShowPassword=True
+# Seconds before clearing password
+ClearPasswordAfter=30'';
+    };
+  };
+
+  ####################
+  # from home/emily/ #
+  ####################
+
+  services = {
+    hyprpaper = {
+      enable = true;
+      settings = {
+        ipc = "on";
+      };
+    };
+  };
+  
+  # Unit/services
+  systemd.user.services = {
+    break-notify = {
+      Unit = {
+        Description = "My description!";
+      };
+      Service = {
+        Type = "oneshot";
+        ExecStart = "${pkgs.libnotify}/bin/notify-send Break";
+      };
+      Install = {
+        WantedBy = [ "default.target" ];
+      };
+    };
+  };
+
+  systemd.user.timers = {
+    break-timer = {
+      Unit = {
+        Description = "Test notify-send";
+      };
+      Timer = {
+        Unit = "test-notify.service";
+        OnCalendar = "*:0/30";
+      };
+      Install = {
+        WantedBy = [ "timers.target" ];
+      };
+    };
+  };
 }
