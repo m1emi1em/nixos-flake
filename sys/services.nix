@@ -1,4 +1,7 @@
 {
+  imports = [
+    ./ssh.nix
+  ];
   services = {
     syncthing = {
       enable = true;
