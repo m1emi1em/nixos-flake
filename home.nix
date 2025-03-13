@@ -48,6 +48,8 @@ let
 
     piper # gui
     # libratbag # gui
+
+    libnotify # gui
   ];
 in
 {
