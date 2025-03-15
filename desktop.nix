@@ -9,10 +9,10 @@
   #   ./virt.nix
   # ];
 
-  boot = {
-    supportedFilesystems = ["zfs"];
-    zfs.forceImportRoot = false;
-  };
+  # boot = {
+  #   supportedFilesystems = ["zfs"];
+  #   zfs.forceImportRoot = false;
+  # };
 
   networking = {
     hostName = "emerald";
