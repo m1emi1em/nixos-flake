@@ -51,7 +51,10 @@
     localNetworkGameTransfers.openFirewall = true;
     #platformOptimizations.enable = true;
     protontricks.enable = true;
-    
+    extraCompatPackages = with pkgs; [
+      proton-ge-bin
+    ]
+    ;
   };
 
   # hyprland
