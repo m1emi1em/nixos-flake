@@ -2,7 +2,6 @@
   description = "m1emi1em NixOS Flake";
 
   inputs = {
-
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
@@ -12,7 +11,7 @@
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
     easy-hosts.url = "github:tgirlcloud/easy-hosts";
@@ -20,79 +19,58 @@
     agenix.url = "github:ryantm/agenix";
   };
 
-  outputs = { self, nixpkgs, home-manager, agenix, ... } @ inputs:
-    let 
-      system = "x86_64-linux";
-      #pkgs-unstable = import nixpkgs-unstable {inherit system; config.allowUnfree = true; };
-      pkgs = nixpkgs.legacyPackages.${system};
-
-      # idk how to use this :3
-      forAllSystems =
-        function:
-        nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed (
-          system: function (
-            import nixpkgs {
-              inherit system;
-              config.allowUnfree = true;
-            }
-          )
-        );
-
-
-      hosts = {
-        emerald = {
-          modules = [
-            ./desktop.nix
-            ./systems/emerald/hardware-configuration.nix
-          ];
-        };
-        quartz = {
-          modules = [
-            ./laptop.nix
-            ./systems/quartz/hardware-configuration.nix
-          ];
-        };
+  outputs = { self, nixpkgs, home-manager, agenix, flake-parts, easy-hosts, ... } @ inputs: let
+    mkHomeManagerModule = {}: {
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+      home-manager.extraSpecialArgs = {
+        inherit inputs;
       };
-    in
-      {
+      home-manager.users.emily = ./home.nix;
+    };
 
-        nixosConfigurations = let
-          base = nixpkgs.lib.nixosSystem {
-            specialArgs = {
-              inherit inputs;
-            };
+    baseHost = {
+      arch = "x86_64";
+      class = "nixos";
+    };
+    
+    # :3c
+    buildHost = host: baseHost // host;
 
-            modules = [
-              ./base-system.nix
-              
-              home-manager.nixosModules.home-manager 
-              {
-
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-
-                home-manager.extraSpecialArgs = {
-                  inherit inputs;
-                };
-
-                # Personal account
-                home-manager.users.emily = ./home.nix;
-              }
-              
-              # ({nixpkgs, inputs, home-manager, ...}: {
-              #   imports = [
-              #     ./home/testificate
-              #   ];
-              # })
-
-              agenix.nixosModules.default
-
-              { environment.systemPackages = [ agenix.packages.${system}.default ]; }
-
-            ];
-
-          };
-          in
-          builtins.mapAttrs (hostname: base.extendModules) hosts;
+    myHosts = {
+      emerald = {
+        modules = [
+          ./desktop.nix
+          ./systems/emerald/hardware-configuration.nix
+        ];
       };
+      quartz = {
+        modules = [
+          ./laptop.nix
+          ./systems/quartz/hardware-configuration.nix
+        ];
+      };
+    };
+
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+
+  in
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = [ "${system}" ];
+      imports = [ easy-hosts.flakeModule ];
+
+      easy-hosts = {
+        shared.modules = [
+          ./base-system.nix
+          home-manager.nixosModules.home-manager
+          (mkHomeManagerModule {})
+          agenix.nixosModules.default
+          { environment.systemPackages = [ agenix.packages.${system}.default ]; }
+        ];
+
+        # >:3c
+        hosts = builtins.mapAttrs (name: buildHost) myHosts;
+      };
+    };
 }
