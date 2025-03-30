@@ -2,8 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, ... }:
-
+{ config, lib, pkgs, inputs', ... }:
 {
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
@@ -239,6 +238,7 @@
     wget
     wofi
     yazi
+    inputs'.agenix.packages.default
   ];
 
   programs.neovim = {

@@ -52,12 +52,9 @@
       };
     };
 
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-
   in
     flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = [ "${system}" ];
+      systems = [ "x86_64-linux" ];
       imports = [ easy-hosts.flakeModule ];
 
       easy-hosts = {
@@ -66,7 +63,6 @@
           home-manager.nixosModules.home-manager
           (mkHomeManagerModule {})
           agenix.nixosModules.default
-          { environment.systemPackages = [ agenix.packages.${system}.default ]; }
         ];
 
         # >:3c
