@@ -1,4 +1,4 @@
-{config, pkgs, inputs, ...} :
+{config, pkgs, ...} :
 let 
   unstablePackages = with pkgs; [
     hyfetch # gui
