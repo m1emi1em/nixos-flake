@@ -1,4 +1,4 @@
-{config, pkgs, ...} :
+{config, pkgs, inputs, ...}:
 let 
   unstablePackages = with pkgs; [
     hyfetch # gui
@@ -76,6 +76,8 @@ let
     kitty
     networkmanagerapplet
     grimblast
+
+    inputs.bb-scripts.legacyPackages.x86_64-linux.scripts.grimblastr
   ];
 in
 {

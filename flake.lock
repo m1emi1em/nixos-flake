@@ -21,6 +21,29 @@
         "type": "github"
       }
     },
+    "bb-scripts": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1743881496,
+        "narHash": "sha256-XiAI7jlJetdg8jKDTn9zsh2jIR7Xsln6cYgV0A/UYII=",
+        "ref": "refs/heads/main",
+        "rev": "2aa94894f79dba1e2cb0fe4bc1b609b0849d9991",
+        "revCount": 21,
+        "type": "git",
+        "url": "http://localhost:32768/m1emi1em/bb-scripts.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "http://localhost:32768/m1emi1em/bb-scripts.git"
+      }
+    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -154,6 +177,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "bb-scripts": "bb-scripts",
         "easy-hosts": "easy-hosts",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager_2",

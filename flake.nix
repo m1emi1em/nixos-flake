@@ -17,10 +17,16 @@
     easy-hosts.url = "github:tgirlcloud/easy-hosts";
 
     agenix.url = "github:ryantm/agenix";
+
+    bb-scripts = {
+      url ="git+http://localhost:32768/m1emi1em/bb-scripts.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, agenix, flake-parts, easy-hosts, ... } @ inputs: let
-    mkHomeManagerModule = {}: {
+    mkHomeManagerModule = {} : {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
       home-manager.users.emily = ./home.nix;
@@ -55,13 +61,16 @@
       imports = [ easy-hosts.flakeModule ];
 
       easy-hosts = {
-        shared.modules = [
-          ./base-system.nix
-          home-manager.nixosModules.home-manager
-          (mkHomeManagerModule {})
-          agenix.nixosModules.default
-        ];
-
+        shared = {
+          specialArgs = { inherit inputs; }; 
+          modules = [
+            ./base-system.nix
+            home-manager.nixosModules.home-manager 
+            (mkHomeManagerModule {})
+            {home-manager.extraSpecialArgs = { inherit inputs; }; }
+            agenix.nixosModules.default
+          ];
+        };
         # >:3c
         hosts = builtins.mapAttrs (name: buildHost) myHosts;
       };
