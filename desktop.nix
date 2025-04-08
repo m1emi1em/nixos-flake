@@ -76,6 +76,21 @@
     };
   };
 
-  home-manager.users.emily.wayland.windowManager.hyprland.settings.monitor =
-    [ "DP-2, 1920x1080@144, 0x0, 1" "DP-3, 1920x1080@144, auto, 1, transform, 3"];
+  home-manager.users.emily.wayland.windowManager.hyprland.settings = {
+    workspace = [
+      "1, monitor:DP-2, default:true"
+      "2, monitor:DP-2"
+      "3, monitor:DP-2"
+      "4, monitor:DP-2"
+      "5, monitor:DP-2"
+      "6, monitor:DP-3"
+      "7, monitor:DP-3"
+      "8, monitor:DP-3"
+      "9, monitor:DP-3"
+      "10, monitor:DP-3"
+    ];
+
+
+    monitor = [ "DP-2, 1920x1080@144, 0x0, 1" "DP-3, 1920x1080@144, auto, 1, transform, 3"];
+  };
 }

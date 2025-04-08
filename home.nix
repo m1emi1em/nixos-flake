@@ -58,7 +58,7 @@ let
     
     hyprpolkitagent # Auth Agent # gui
     hyprpaper
-    dunst # Notification Daemon # gui
+    # dunst # Notification Daemon # gui
     waybar # Status bar # gui
     waypaper  # gui
 
@@ -296,6 +296,10 @@ ClearPasswordAfter=30'';
         ipc = "on";
       };
     };
+
+    hyprpolkitagent = {
+      enable = true;
+    };
   };
   
   # Unit/services
@@ -441,7 +445,11 @@ ClearPasswordAfter=30'';
         "$mainMod ALT SHIFT, R, exec, hyprctl reload" # Manually reload
         "$mainMod, TAB, focuscurrentorlast" # Go to last focused window
 
-        # "$mainMod Control_L SHIFT, S, exec, $screenshotTool"
+        "$mainMod Control_L SHIFT, S, exec, $screenshotTool"
+        
+        "$mainMod SHIFT, P, pin, active"
+        "$mainMod, N, exec, swaync-client -t"
+        "$mainMod SHIFT, L, exec, hyprlock"
         
         # mainMod + hjkl for moving focus between windows
         # "$mainMod, H, movefocus, l"
@@ -474,19 +482,34 @@ source = ~/.config/hypr/hyprland_1.conf
       };
       label = {
         monitor = "";
-        text = "Hi there, $USER";
-        color = "rgba(200, 200, 200, 1.0)";
+        text = "sup nerd";
+        color = "rgba(255, 255, 255, 1.0)";
         font_size = 25;
         font_family = "Noto Sans";
 
         position = "0, 80";
         halign = "center";
         valign = "center";
+      };
 
+      background = {
+        monitor = "";
+        path = "";
+        color = "rgba(0, 0, 0, 1.0)";
       };
     };
 
     sourceFirst = true;
+  };
+
+  services = {
+    swaync = {
+      enable = true;
+    };
+
+    swayosd = {
+      enable = true;
+    };
   };
 
   # programs.firefox = {
