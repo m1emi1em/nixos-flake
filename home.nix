@@ -70,6 +70,7 @@ let
     hyprlock # gui
     #hyprsysteminfo
     hyprsunset # gui
+    swaynotificationcenter
 
 
     rmpc
@@ -339,131 +340,183 @@ ClearPasswordAfter=30'';
       fileManager = "dolphin";
       appLauncher = "wofi --show drun";
       screenshotTool = "grimblastr";
+      uwsmWrap = command: "uwsm app -- " + command;
+      uwsmWrapAll = list: map uwsmWrap list;
     in
       {
-    enable = true;
-    systemd.enable = false;
+        enable = true;
+        systemd.enable = false;
 
-    settings = {
+        settings = {
 
-      "$terminal" = "${terminal}";
-      "$fileManager" = "${fileManager}";
-      "$menu" = "${appLauncher}";
-      "$mainMod" = "SUPER";
-      "$screenshotTool" = "${screenshotTool}";
+          "$terminal" = "${terminal}";
+          "$fileManager" = "${fileManager}";
+          "$menu" = "${appLauncher}";
+          "$mainMod" = "SUPER";
+          "$screenshotTool" = "${screenshotTool}";
 
-      exec-once = [
-        "waybar"
-        "nm-applet"
-        "waypaper --restore"
-      ];
+          exec-once = uwsmWrapAll [
+            "waybar"
+            "nm-applet"
+            "waypaper --restore"
+          ];
 
-      general = {
-        "gaps_in" = 3;
-        "gaps_out" = 5;
-        "border_size" = 2;
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = "rgba(595959aa)";
-        "resize_on_border" = false;
-        "allow_tearing" = true;
-        "layout" = "dwindle";
-      };
+          general = {
+            "gaps_in" = 3;
+            "gaps_out" = 5;
+            "border_size" = 2;
+            "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+            "col.inactive_border" = "rgba(595959aa)";
+            "resize_on_border" = false;
+            "allow_tearing" = true;
+            "layout" = "dwindle";
+          };
 
-      decoration = {
-        rounding = 0;
-        active_opacity = 1.0;
-        inactive_opacity = 1.0;
-        shadow = {
-          enabled = true;
-          range = 4;
-          render_power = 3;
-          color = "rgba(1a1a1aee)";
+          decoration = {
+            rounding = 0;
+            active_opacity = 1.0;
+            inactive_opacity = 1.0;
+            shadow = {
+              enabled = true;
+              range = 4;
+              render_power = 3;
+              color = "rgba(1a1a1aee)";
+            };
+            blur = {
+              enabled = true;
+              size = 3;
+              passes = 1;
+
+              vibrancy = 0.1696;
+            };
+          };
+
+          # animations = {
+          #   enabled = true;
+          #   bezier = [
+          #     "easein, 0.42, 0, 0.58, 1"
+          #     "easeout, 0.42, 0, 1, 1"
+          #     "easeinout, 0, 0, 0.58, 1"
+          #   ];
+          #   animation = [
+          #     "windows, 1, 2, easeinout"
+          #     "layers, 1, 2, easeinout"
+          #     "fade, 1, 2, easeinout"
+          #     "border, 1, 2, easeinout"
+          #     "borderangle, 1, 2, easeinout"
+          #     "workspaces, 1, 4, easeinout"
+          #   ];
+          # };
+
+          dwindle = {
+            pseudotile = true;
+            preserve_split = true;
+          };
+
+          master = {
+            new_status = "master";
+          };
+
+          misc = {
+            force_default_wallpaper = -1;
+            disable_hyprland_logo = false;
+            vrr = 2; # Fullscreen only
+          };
+
+          input = {
+            kb_layout = "us";
+            kb_variant = "";
+            kb_model = "";
+            kb_options = "caps:super";
+            kb_rules = "";
+
+            follow_mouse = 1;
+            sensitivity = 0;
+            
+            accel_profile = "flat";
+            force_no_accel = true;
+            touchpad = {
+              natural_scroll = false;
+            };
+          };
+
+          gestures = {
+            workspace_swipe = false;
+          };
+
+          bind = [
+
+            "$mainMod, E, exec, uwsm app -- $terminal"
+            "$mainMod, Q, killactive,"
+            "$mainMod ALT Control_L, backspace, exec, uwsm stop"
+            # "$mainMod, E, exec, $fileManager"
+            # "$mainMod, V, togglefloating,"
+            "$mainMod, R, exec, uwsm app -- $menu"
+
+
+            "$mainMod ALT SHIFT, R, exec, uwsm app -- hyprctl reload" # Manually reload
+            "$mainMod, TAB, focuscurrentorlast" # Go to last focused window
+
+            "$mainMod Control_L SHIFT, S, exec, uwsm app -- $screenshotTool" # Take screenhot
+            "$mainMod SHIFT, P, pin, active"
+            "$mainMod, F, fullscreenstate, 1"
+
+            
+            "$mainMod, N, exec, uwsm app -- swaync-client -t" # Toggle notifications
+            "$mainMod Control_L SHIFT, L, exec, uwsm app -- hyprlock" # Lock screen
+
+            # Move between windows
+            "$mainMod, H, movefocus, l"
+            "$mainMod, L, movefocus, r"
+            "$mainMod, K, movefocus, u"
+            "$mainMod, J, movefocus, d"
+
+            # Move windows in direction
+            "$mainMod SHIFT, H, movewindow, l"
+            "$mainMod SHIFT, L, movewindow, r"
+            "$mainMod SHIFT, K, movewindow, u"
+            "$mainMod SHIFT, J, movewindow, d"
+
+            # Move between workspaces
+            "$mainMod, 1, workspace, 1"
+            "$mainMod, 2, workspace, 2"
+            "$mainMod, 3, workspace, 3"
+            "$mainMod, 4, workspace, 4"
+            "$mainMod, 5, workspace, 5"
+            "$mainMod, 6, workspace, 6"
+            "$mainMod, 7, workspace, 7"
+            "$mainMod, 8, workspace, 8"
+            "$mainMod, 9, workspace, 9"
+            "$mainMod, 0, workspace, 10"
+            
+            # Move window to workspace
+            "$mainMod SHIFT, 1, movetoworkspace, 1"
+            "$mainMod SHIFT, 2, movetoworkspace, 2"
+            "$mainMod SHIFT, 3, movetoworkspace, 3"
+            "$mainMod SHIFT, 4, movetoworkspace, 4"
+            "$mainMod SHIFT, 5, movetoworkspace, 5"
+            "$mainMod SHIFT, 6, movetoworkspace, 6"
+            "$mainMod SHIFT, 7, movetoworkspace, 7"
+            "$mainMod SHIFT, 8, movetoworkspace, 8"
+            "$mainMod SHIFT, 9, movetoworkspace, 9"
+
+
+            # Go forwards and backwards in workspaces
+            # "$mainMod, ], workspace, e+1"
+            # "$mainMod, ], workspace, e-1"
+
+
+            # Special workpspace
+            "$mainMod, S, togglespecialworkspace, magic"
+            "$mainMod SHIFT, S, movetoworkspace, special:magic"
+          ];
         };
-        blur = {
-          enabled = true;
-          size = 3;
-          passes = 1;
 
-          vibrancy = 0.1696;
-        };
-      };
-
-      # animations = {
-      #   enabled = true;
-      #   bezier = [
-      #     "easein, 0.42, 0, 0.58, 1"
-      #     "easeout, 0.42, 0, 1, 1"
-      #     "easeinout, 0, 0, 0.58, 1"
-      #   ];
-      #   animation = [
-      #     "windows, 1, 2, easeinout"
-      #     "layers, 1, 2, easeinout"
-      #     "fade, 1, 2, easeinout"
-      #     "border, 1, 2, easeinout"
-      #     "borderangle, 1, 2, easeinout"
-      #     "workspaces, 1, 4, easeinout"
-      #   ];
-      # };
-
-      dwindle = {
-        pseudotile = true;
-        preserve_split = true;
-      };
-
-      master = {
-        new_status = "master";
-      };
-
-      misc = {
-        force_default_wallpaper = -1;
-        disable_hyprland_logo = false;
-        vrr = 2; # Fullscreen only
-      };
-
-      input = {
-        kb_layout = "us";
-        kb_variant = "";
-        kb_model = "";
-        kb_options = "caps:super";
-        kb_rules = "";
-
-        follow_mouse = 1;
-        sensitivity = 0;
-        
-        accel_profile = "flat";
-        force_no_accel = true;
-        touchpad = {
-          natural_scroll = false;
-        };
-      };
-
-      gestures = {
-        workspace_swipe = false;
-      };
-
-      bind = [
-        "$mainMod ALT SHIFT, R, exec, hyprctl reload" # Manually reload
-        "$mainMod, TAB, focuscurrentorlast" # Go to last focused window
-
-        "$mainMod Control_L SHIFT, S, exec, $screenshotTool"
-        
-        "$mainMod SHIFT, P, pin, active"
-        "$mainMod, N, exec, swaync-client -t"
-        "$mainMod SHIFT, L, exec, hyprlock"
-        
-        # mainMod + hjkl for moving focus between windows
-        # "$mainMod, H, movefocus, l"
-        # "$mainMod, L, movefocus, r"
-        # "$mainMod, K, movefocus, u"
-        # "$mainMod, J, movefocus, d"
-      ];
-    };
-
-    # Bite me
-    extraConfig = ''
+        # Bite me
+        extraConfig = ''
 source = ~/.config/hypr/hyprland_1.conf
 '';
-  };
+      };
 
   programs.hyprlock = {
     enable = true;
@@ -497,15 +550,25 @@ source = ~/.config/hypr/hyprland_1.conf
         path = "";
         color = "rgba(0, 0, 0, 1.0)";
       };
+
+      input-field = {
+        monitor = "";
+
+        rounding = 0;
+        
+        position = "0, 0";
+        halign = "center";
+        valign = "center";
+      };
     };
 
     sourceFirst = true;
   };
 
   services = {
-    swaync = {
-      enable = true;
-    };
+    # swaync = {
+    #   enable = true;
+    # };
 
     swayosd = {
       enable = true;
