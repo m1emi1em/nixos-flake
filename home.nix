@@ -421,6 +421,7 @@ ClearPasswordAfter=30'';
             force_default_wallpaper = -1;
             disable_hyprland_logo = false;
             vrr = 2; # Fullscreen only
+            focus_on_activate = true;
           };
 
           input = {
@@ -499,6 +500,7 @@ ClearPasswordAfter=30'';
             "$mainMod SHIFT, 7, movetoworkspace, 7"
             "$mainMod SHIFT, 8, movetoworkspace, 8"
             "$mainMod SHIFT, 9, movetoworkspace, 9"
+            "$mainMod SHIFT, 0, movetoworkspace, 10"
 
 
             # Go forwards and backwards in workspaces
