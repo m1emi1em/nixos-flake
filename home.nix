@@ -113,9 +113,9 @@ in
       ];
   };
 
-
   home.shellAliases = {
     nv = "nvim";
+    y = "yazi";
   };
 
   home.sessionVariables = {
