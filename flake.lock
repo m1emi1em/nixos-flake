@@ -37,11 +37,11 @@
         "rev": "8102e67e881e5020729425fab003dc5c515dd6c0",
         "revCount": 22,
         "type": "git",
-        "url": "http://localhost:32768/m1emi1em/bb-scripts.git"
+        "url": "http://emerald.localdomain:32768/m1emi1em/bb-scripts.git"
       },
       "original": {
         "type": "git",
-        "url": "http://localhost:32768/m1emi1em/bb-scripts.git"
+        "url": "http://emerald.localdomain:32768/m1emi1em/bb-scripts.git"
       }
     },
     "darwin": {
