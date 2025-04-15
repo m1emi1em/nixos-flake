@@ -19,18 +19,18 @@
     agenix.url = "github:ryantm/agenix";
 
     bb-scripts = {
-      url ="git+http://localhost:32768/m1emi1em/bb-scripts.git";
+      url ="git+http://emerald.localdomain:32768/m1emi1em/bb-scripts.git";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
   };
 
   outputs = { self, nixpkgs, home-manager, agenix, flake-parts, easy-hosts, ... } @ inputs: let
-    mkHomeManagerModule = {} : {
-      home-manager.useGlobalPkgs = true;
-      home-manager.useUserPackages = true;
-      home-manager.users.emily = ./home.nix;
-    };
+    # mkHomeManagerModule = {} : {
+    #   home-manager.useGlobalPkgs = true;
+    #   home-manager.useUserPackages = true;
+    #   home-manager.users.emily = ./home.nix;
+    # };
 
     baseHost = {
       arch = "x86_64";
@@ -66,9 +66,11 @@
           modules = [
             ./base-system.nix
             home-manager.nixosModules.home-manager 
-            (mkHomeManagerModule {})
-            {home-manager.extraSpecialArgs = { inherit inputs; }; }
+            # (mkHomeManagerModule {})
+            # ({inputs', ...}: {home-manager.extraSpecialArgs = {inherit inputs';};} )
+            # {home-manager.extraSpecialArgs = { inherit inputs; }; }
             agenix.nixosModules.default
+            ./home
           ];
         };
         # >:3c
