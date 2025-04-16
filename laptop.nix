@@ -29,6 +29,13 @@
     };
   };
   
-  home-manager.users.emily.wayland.windowManager.hyprland.settings.monitor =
-    [ ",preferred,auto,auto"];
+  home-manager.users.emily.wayland.windowManager.hyprland.settings = {
+    monitor = [ ",preferred,auto,auto"];
+    xwayland = {
+      force_zero_scaling = true;
+    };
+    env = [
+      "GDK_SCALE,2"
+    ];
+  };
 }
