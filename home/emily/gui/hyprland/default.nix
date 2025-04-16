@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... } :
+{ pkgs, inputs', ... } :
 let
   hyprlandPackages = with pkgs;
     [
@@ -17,7 +17,8 @@ let
       networkmanagerapplet
       grimblast
 
-      inputs.bb-scripts.legacyPackages.x86_64-linux.scripts.grimblastr
+      # inputs.bb-scripts.legacyPackages.x86_64-linux.scripts.grimblastr
+      inputs'.bb-scripts.legacyPackages.scripts.grimblastr
 
     ];
 in
