@@ -7,7 +7,7 @@ let
     vesktop # gui
     keepassxc # gui
     prismlauncher # gui
-    signal-desktop # gui
+    signal-desktop-bin # gui
     ungoogled-chromium # gui
 
 
