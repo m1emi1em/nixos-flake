@@ -19,6 +19,9 @@
 
       
       "$mainMod, N, exec, uwsm app -- swaync-client -t" # Toggle notifications
+      "$mainMod SHIFT, N, exec, uwsm app -- swaync-client -d" # Toggle DND
+
+
       "$mainMod Control_L SHIFT, L, exec, uwsm app -- hyprlock" # Lock screen
 
       # Move between windows
