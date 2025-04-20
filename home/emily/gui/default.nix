@@ -23,8 +23,8 @@ let
     alacritty # gui
     lutris # gui
 
-    godot_4 # gui
-    aseprite # gui
+    # godot_4 # gui
+    # aseprite # gui
     reaper # gui
 
 
