@@ -30,12 +30,12 @@
   };
   
   home-manager.users.emily.wayland.windowManager.hyprland.settings = {
-    monitor = [ ",preferred,auto,auto"];
-    xwayland = {
-      force_zero_scaling = true;
-    };
-    env = [
-      "GDK_SCALE,2"
-    ];
+    monitor = [ ",highres@highrr,auto,1"];
+  #   xwayland = {
+  #     force_zero_scaling = true;
+  #   };
+  #   env = [
+  #     "GDK_SCALE,2"
+  #   ];
   };
 }
