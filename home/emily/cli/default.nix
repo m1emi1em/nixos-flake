@@ -3,6 +3,7 @@ let
   cliPackages = with pkgs; [
     charm-freeze
     duf # util
+    hledger
     hyfetch
     irssi
     pandoc
