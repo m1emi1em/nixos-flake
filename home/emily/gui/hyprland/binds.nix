@@ -13,7 +13,7 @@
       "$mainMod ALT SHIFT, R, exec, uwsm app -- hyprctl reload" # Manually reload
       "$mainMod, TAB, focuscurrentorlast" # Go to last focused window
 
-      "$mainMod Control_L SHIFT, S, exec, uwsm app -- $screenshotTool" # Take screenhot
+      "$mainMod Control_L, PRINT, exec, uwsm app -- $screenshotTool" # Take screenhot
       "$mainMod SHIFT, P, pin, active"
       "$mainMod, F, fullscreenstate, 1"
 
