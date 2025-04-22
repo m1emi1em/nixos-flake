@@ -29,6 +29,7 @@ let
 
 
     libnotify
+    wl-clipboard-rs
 
   ];
 in
@@ -37,6 +38,7 @@ in
     ./hyprland
     ./kitty.nix
     ./gaming
+    ./nsxiv.nix
     ./mpd.nix
   ];
   home = {
