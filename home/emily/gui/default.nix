@@ -44,4 +44,8 @@ in
   home = {
     packages = guiPackages;
   };
+
+  xdg = {
+    mimeApps.enable = true;
+  };
 }
