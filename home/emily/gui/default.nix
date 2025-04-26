@@ -35,11 +35,12 @@ let
 in
 {
   imports = [
+    ./firefox.nix
+    ./gaming
     ./hyprland
     ./kitty.nix
-    ./gaming
-    ./nsxiv.nix
     ./mpd.nix
+    ./nsxiv.nix
   ];
   home = {
     packages = guiPackages;
