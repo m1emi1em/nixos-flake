@@ -16,12 +16,12 @@ let
       # fish
       ''
 switch $argv[1]
-    case 'c'
-	read -L filename
-	wl-copy --type image/png < "$(pwd)/$filename"
-	notify-send "Copied image to clipboard!"
-    case '*'
-	notify-send "Unknown command $argv[1]"
+       case 'c'
+            read -L filename
+            wl-copy --type image/png < "$filename"
+            notify-send "Copied image to clipboard!" "$filename"
+       case '*'
+            notify-send "Unknown command $argv[1]"
 end
 '';
 
