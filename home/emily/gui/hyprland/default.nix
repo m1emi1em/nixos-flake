@@ -11,7 +11,6 @@ let
       hypridle
       hyprlock
       hyprsunset
-      swaynotificationcenter
       xdg-desktop-portal-hyprland # gui
       kitty
       networkmanagerapplet
@@ -19,7 +18,6 @@ let
 
       # inputs.bb-scripts.legacyPackages.x86_64-linux.scripts.grimblastr
       inputs'.bb-scripts.legacyPackages.scripts.grimblastr
-
     ];
 in
 {
@@ -27,6 +25,7 @@ in
     ./binds.nix
     ./services.nix
     ./hyprlock
+    ./hyprpanel.nix
   ];
   
   home.packages = hyprlandPackages;
@@ -53,8 +52,6 @@ in
           "$screenshotTool" = "${screenshotTool}";
 
           exec-once = uwsmWrapAll [
-            "waybar"
-            "nm-applet"
             "waypaper --restore"
           ];
 

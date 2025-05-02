@@ -60,9 +60,4 @@ ClearPasswordAfter=30'';
       };
     };
   };
-  services = {
-    swayosd = {
-      enable = true;
-    };
-  };
 }

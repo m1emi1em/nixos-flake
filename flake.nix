@@ -23,6 +23,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
+    hyprpanel = {
+      url = "github:Jas-SinghFSU/HyprPanel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, agenix, flake-parts, easy-hosts, ... } @ inputs: let
@@ -71,6 +75,7 @@
             # {home-manager.extraSpecialArgs = { inherit inputs; }; }
             agenix.nixosModules.default
             ./home
+            # {nixpkgs.overlays = [inputs.hyprpanel.overlay];}
           ];
         };
         # >:3c
