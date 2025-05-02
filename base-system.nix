@@ -107,6 +107,7 @@
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
+    nasin-nanpa
   ];
   
   nixpkgs.config = {
