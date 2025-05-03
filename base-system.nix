@@ -108,6 +108,7 @@
     noto-fonts-cjk-sans
     noto-fonts-emoji
     nasin-nanpa
+    nerd-fonts.fira-code
   ];
   
   nixpkgs.config = {
