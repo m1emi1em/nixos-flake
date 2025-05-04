@@ -51,7 +51,7 @@ in
       name = "nsxiv";
       genericName = "Image Viewer";
       exec = "nsxiv ${defaultArgs} %U";
-      mimeType = ["image/png"];
+      mimeType = ["image/png" "image/webp" "image/jpeg" "image/gif"];
     };
 
     mimeApps.defaultApplications = {
