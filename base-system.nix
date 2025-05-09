@@ -226,11 +226,13 @@
     figlet
     git
     htop
+    inputs'.agenix.packages.default
     just
     kitty
     lolcat
     p7zip
     ripgrep
+    smartmontools
     swayfx
     tealdeer
     tmux
@@ -240,7 +242,6 @@
     wget
     wofi
     yazi
-    inputs'.agenix.packages.default
   ];
 
   programs.neovim = {
@@ -259,4 +260,7 @@
     defaultEditor =  true;
   };
 
+  smartd = {
+    enable = true;
+  };
 }
