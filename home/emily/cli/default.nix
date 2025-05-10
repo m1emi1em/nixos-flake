@@ -22,6 +22,7 @@ in
     ./nvim.nix
     ./pfetch.nix
     ./yazi.nix
+    ./tealdeer.nix
   ]; 
 
   home.packages = cliPackages;
