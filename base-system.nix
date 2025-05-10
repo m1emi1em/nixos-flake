@@ -260,7 +260,5 @@
     defaultEditor =  true;
   };
 
-  smartd = {
-    enable = true;
-  };
+  services.smartd.enable = true;
 }
