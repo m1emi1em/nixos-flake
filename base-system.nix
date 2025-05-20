@@ -9,7 +9,11 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
+  services.displayManager = {
+    sddm.enable = true;
+    defaultSession = "hyprland-uwsm";
+  };
+  
   services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
