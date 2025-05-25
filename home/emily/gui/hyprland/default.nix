@@ -47,6 +47,10 @@ in
 
         settings = {
 
+          ecosystem = {
+            no_update_news = true;
+          };
+
           "$terminal" = "${terminal}";
           "$fileManager" = "${fileManager}";
           "$menu" = "${appLauncher}";
