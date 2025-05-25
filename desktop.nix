@@ -93,4 +93,26 @@
 
     monitor = [ "DP-2, 1920x1080@144, 0x0, 1" "DP-3, 1920x1080@144, auto, 1, transform, 3"];
   };
+  home-manager.users.emily = {
+    programs = {
+      hyprpanel = {
+        settings = {
+          layout = {
+            "bar.layouts" = {
+              "0" = {
+                left = [ "dashboard" "workspaces" ];
+                middle = [ "windowtitle" ];
+                right = [  "systray" "network" "weather" "volume" "clock" "notifications"];
+              };
+              "1" = {
+                left = ["workspaces"];
+                middle = ["windowtitle"];
+                right = [];
+              };
+            };
+          };
+        };
+      };
+    };
+  };
 }
