@@ -38,6 +38,7 @@ in
     ./firefox.nix
     ./gaming
     ./hyprland
+    ./i18n.nix
     ./kitty.nix
     ./mpd.nix
     ./nsxiv.nix

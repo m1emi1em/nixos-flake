@@ -92,21 +92,6 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
 
-  i18n = {
-    inputMethod = {
-      enable = true;
-      type = "fcitx5";
-      fcitx5 = {
-        addons = with pkgs; [
-          fcitx5-mozc
-          fcitx5-gtk
-          catppuccin-fcitx5
-        ];
-
-      };
-    };
-  };
-
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
