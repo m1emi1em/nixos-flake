@@ -26,6 +26,7 @@ in
     ./services.nix
     ./hyprlock
     ./hyprpanel.nix
+    ./walker.nix
   ];
   
   home.packages = hyprlandPackages;
@@ -34,7 +35,8 @@ in
     let
       terminal = "kitty";
       fileManager = "dolphin";
-      appLauncher = "wofi --show drun";
+      # appLauncher = "wofi --show drun";
+      appLauncher = "walker";
       screenshotTool = "grimblastr";
       uwsmWrap = command: "uwsm app -- " + command;
       uwsmWrapAll = list: map uwsmWrap list;
