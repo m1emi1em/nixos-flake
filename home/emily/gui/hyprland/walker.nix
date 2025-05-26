@@ -4,5 +4,6 @@
   programs.walker = {
     enable = true;
     runAsService = true;
+    package = pkgs.walker;
   };
 }
