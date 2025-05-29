@@ -6,7 +6,7 @@ in {
 
   programs.walker = {
     enable = true;
-    runAsService = true;
+    #runAsService = true; # This doesn't fucking work?
     package = pkgs.walker;
     config = importTOML ./walker.toml;
   };
