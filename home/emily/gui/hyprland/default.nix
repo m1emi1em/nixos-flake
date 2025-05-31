@@ -59,7 +59,6 @@ in
 
           exec-once = uwsmWrapAll [
             "waypaper --restore"
-            "walker --gapplication-service"
           ];
 
           general = {
