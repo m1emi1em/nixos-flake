@@ -26,6 +26,7 @@ in
     ./services.nix
     ./hyprlock
     ./hyprpanel.nix
+    ./wofi.nix
   ];
   
   home.packages = hyprlandPackages;
