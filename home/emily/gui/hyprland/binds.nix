@@ -1,7 +1,11 @@
 { ... } :
 {
   wayland.windowManager.hyprland.settings = {
-    bind = [
+    bind =
+      let
+        toggleDND = "hyprpanel toggleDnd";
+        toggleNotifs = "hyprpanel toggleWindow notificationsmenu";
+      in [
       "$mainMod, E, exec, uwsm app -- $terminal"
       "$mainMod, Q, killactive,"
       "$mainMod ALT Control_L, backspace, exec, uwsm stop"
@@ -18,8 +22,9 @@
       "$mainMod, F, fullscreenstate, 1"
 
       
-      "$mainMod, N, exec, hyprpanel toggleWindow notificationsmenu" # Toggle notifications
+      "$mainMod, N, exec, ${toggleNotifs}" # Toggle notifications
       # "$mainMod SHIFT, N, exec, uwsm app -- swaync-client -d" # Toggle DND
+      "$mainMod SHIFT, N, exec, ${toggleDND}" # Toggle DND
 
 
       "$mainMod Control_L SHIFT, L, exec, uwsm app -- hyprlock" # Lock screen
