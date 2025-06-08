@@ -25,7 +25,7 @@ in
     ./pfetch.nix
     ./ssh.nix
     ./tealdeer.nix
-    ./yazi.nix
+    ./yazi
   ]; 
 
   home.packages = cliPackages;
