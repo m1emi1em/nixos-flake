@@ -27,6 +27,7 @@ let
     # aseprite # gui
     reaper # gui
 
+    playerctl
 
     libnotify
     wl-clipboard-rs
