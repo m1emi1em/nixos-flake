@@ -245,6 +245,7 @@
     wget
     wofi
     yazi
+    gocryptfs
   ];
 
   programs.neovim = {
