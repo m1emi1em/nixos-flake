@@ -1,0 +1,101 @@
+#+TITLE: GNU/Emacs
+#+STARTUP: overview
+#+PROPERTY: header-args:emacs-lisp :tangle yes :results none
+
+#+begin_src emacs-lisp
+(require 'use-package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+
+;; Line nums
+(global-display-line-numbers-mode)
+(setq display-line-numbers-type 'relative)
+
+(setq font-lock-maximum-decoration t)
+
+(use-package catppuccin-theme
+  :ensure t
+  :config
+  (load-theme 'catppuccin :no-confirm)
+  (setq catppuccin-flavor 'mocha)
+  (catppuccin-reload))
+
+(setq inhibit-startup-screen t)
+
+(use-package evil
+  :ensure t
+  :hook ((prog-mode text-mode conf-mode) . evil-local-mode)
+  :custom
+  (evil-undo-system 'undo-redo)
+  (evil-normal-state-cursor 'hollow)
+  (evil-emacs-state-cursor 'bar)
+  :config
+  (with-eval-after-load 'evil-maps
+   (define-key evil-motion-state-map (kbd ":") 'evil-repeat-find-char)
+   (define-key evil-motion-state-map (kbd ";") 'evil-ex))
+  
+  )
+
+(use-package nix-mode)
+(use-package fish-mode)
+(use-package haskell-mode)
+
+;; Start emacs in a maximized window
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+;;; Copy and paste (this at least works on Linux/NixOS/Wayland/KDE Plasma 6 for most part)
+(keymap-global-set "C-S-c" 'kill-ring-save)
+(keymap-global-set "C-S-v" 'clipboard-yank)
+
+(use-package envrc
+  :hook (after-init . envrc-global-mode))
+
+(use-package magit)
+
+(add-to-list 'default-frame-alist '(font . "FiraCode Nerd Font Mono-10"))
+(set-face-attribute 'default t :font "FiraCode Nerd Font Mono-10")
+
+(use-package ivy
+  :custom
+  (ivy-use-virtual-buffers t)
+  (enable-recursive-minibuffers t)
+  :config
+  (ivy-mode 1))
+
+(use-package corfu
+  :custom
+  (corfu-auto t)
+  (corfu-quit-no-match 'separator)
+  :config
+  (global-corfu-mode))
+
+(use-package eat)
+
+(use-package projectile
+  :init (projectile-mode +1)
+  :bind (:map projectile-mode-map
+              ("C-c p" . projectile-command-map)
+	      ("C-c p x e" . 'eat-project-other-window))
+  :config (projectile-mode))
+
+
+(use-package which-key
+  :config (which-key-mode))
+
+;;; Disable the system bell holy wow that's obnoxious with pgtk
+(setf ring-bell-function 'ignore)
+
+;;; Change backup
+(setq backup-directory-alist '(("." . "~/.backups")))
+
+;;; Disable prompt for git-controlled symlinks
+(setq vc-follow-symlinks t)
+
+;;; Stop warning buffer from popping up for not-emergencies
+(setq warning-minimum-level :emergency)
+
+#+end_src

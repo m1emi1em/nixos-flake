@@ -1,7 +1,7 @@
 {pkgs, inputs', ... }:
 let
   guiPackages = with pkgs; [
-    emacs
+    #emacs
     mpv # gui
     discord # gui
     vesktop # gui

@@ -11,7 +11,10 @@
     backupFileExtension = "backup";
   };
 
-  nixpkgs.overlays = [inputs.hyprpanel.overlay];
+  nixpkgs.overlays = with inputs; [
+    hyprpanel.overlay
+    emacs-overlay.overlay
+  ];
   
   # imports = [
   #   inputs.hyprpanel.homeManagerModules.hyprpanel

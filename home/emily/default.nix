@@ -2,6 +2,7 @@
 {
   imports = [
     # ./../../home.nix
+    ./emacs
     ./cli
     ./gui
   ];
