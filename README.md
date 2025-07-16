@@ -1,3 +1,3 @@
 # m1emi1em's NixOS configs
 
-This is a terrible flake, do not use it. I legitimately have no idea what I'm doing. 
+This is a flake, use it at your own risk. I only have a vague idea of what I'm doing. 
