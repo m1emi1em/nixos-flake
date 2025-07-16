@@ -14,6 +14,8 @@
   #   zfs.forceImportRoot = false;
   # };
 
+  time.timeZone = "America/New_York";
+
   # There's no need to do it this way for now
   # But it works so that's neat I guess
   networking.hostId = lib.mkIf (config.networking.hostName == "emerald") "7210d2a7"; 

@@ -5,6 +5,7 @@
   };
 
   services = {
+    automatic-timezoned.enable = true;
     supergfxd.enable = true;
 
     asusd = {
