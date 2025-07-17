@@ -27,9 +27,10 @@
       url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    catppuccin.url = "github:catppuccin/nix";
   };
 
-  outputs = { self, nixpkgs, home-manager, agenix, flake-parts, easy-hosts, ... } @ inputs: let
+  outputs = { self, nixpkgs, home-manager, agenix, flake-parts, easy-hosts, catppuccin, ... } @ inputs: let
     # mkHomeManagerModule = {} : {
     #   home-manager.useGlobalPkgs = true;
     #   home-manager.useUserPackages = true;
@@ -74,6 +75,7 @@
             # ({inputs', ...}: {home-manager.extraSpecialArgs = {inherit inputs';};} )
             # {home-manager.extraSpecialArgs = { inherit inputs; }; }
             agenix.nixosModules.default
+            catppuccin.nixosModules.catppuccin
             ./home
           ];
         };

@@ -1,10 +1,11 @@
-{ pkgs, inputs', ...}:
+{ pkgs, inputs', inputs, ...}:
 {
   imports = [
     # ./../../home.nix
     ./emacs
     ./cli
     ./gui
+    inputs.catppuccin.homeModules.catppuccin
   ];
 
   home = {
