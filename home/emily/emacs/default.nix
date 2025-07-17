@@ -7,7 +7,7 @@
 			alwaysTangle = true;
 			alwaysEnsure = true;
 			defaultInitFile = true;
-			package = pkgs.emacs-git;
+			package = pkgs.emacs-git-pgtk;
 		};
 	};
 }
