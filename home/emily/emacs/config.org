@@ -3,99 +3,218 @@
 #+PROPERTY: header-args:emacs-lisp :tangle yes :results none
 
 #+begin_src emacs-lisp
-(require 'use-package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(package-initialize)
+  (require 'use-package)
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+  (package-initialize)
+#+end_src
 
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
+ 
+#+begin_src emacs-lisp
+  ;; Hide the bars
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
 
-;; Line nums
-(global-display-line-numbers-mode)
-(setq display-line-numbers-type 'relative)
+  ;; Line nums
+  (global-display-line-numbers-mode)
+  (setq display-line-numbers-type 'relative)
 
-(setq font-lock-maximum-decoration t)
 
-(use-package catppuccin-theme
-  :ensure t
-  :config
-  (load-theme 'catppuccin :no-confirm)
-  (setq catppuccin-flavor 'mocha)
-  (catppuccin-reload))
+  ;; Don't show startup screen
+  (setq inhibit-startup-screen t)
 
-(setq inhibit-startup-screen t)
+  ;; Start emacs in a maximized window
+  (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
-(use-package evil
-  :ensure t
-  :hook ((prog-mode text-mode conf-mode) . evil-local-mode)
-  :custom
-  (evil-undo-system 'undo-redo)
-  (evil-normal-state-cursor 'hollow)
-  (evil-emacs-state-cursor 'bar)
-  :config
-  (with-eval-after-load 'evil-maps
-   (define-key evil-motion-state-map (kbd ":") 'evil-repeat-find-char)
-   (define-key evil-motion-state-map (kbd ";") 'evil-ex))
+  ;;; Disable the system bell holy wow that's obnoxious with pgtk
+  (setf ring-bell-function 'ignore)
+
+  ;;; Change backup
+  (setq backup-directory-alist '(("." . "~/.backups")))
+
+  ;;; Disable prompt for git-controlled symlinks
+  (setq vc-follow-symlinks t)
+
+  ;;; Stop warning buffer from popping up for not-emergencies
+  (setq warning-minimum-level :emergency)
+
+  ;; Enable recent file history
+  (recentf-mode 1)
+  (setq recentf-max-saved-items 100)
+
+  ;; Remember cursor location in a file when reopening
+  (save-place-mode 1)
+
+  ;; Watch files for changes and update buffers if there are no unsaved changes
+  (global-auto-revert-mode 1)
+
+  ;; Add matching delimiters
+  (electric-pair-mode t)
+
+  ;;; Compile uses comint mode instead of compilation-mode
+  (defadvice compile (before ad-compile-smart activate)
+    (ad-set-arg 1 t))
+#+end_src
+
+#+begin_src emacs-lisp
+  ;; Theme Stuff
+  (setq font-lock-maximum-decoration t)
+
+  (use-package catppuccin-theme
+    :ensure t
+    :config
+    (load-theme 'catppuccin :no-confirm)
+    (setq catppuccin-flavor 'mocha)
+    (catppuccin-reload))
+
+  ;; Font Stuff
+  (add-to-list 'default-frame-alist '(font . "FiraCode Nerd Font Mono-10"))
+  (set-face-attribute 'default t :font "FiraCode Nerd Font Mono-10")
+#+end_src
+
+#+begin_src emacs-lisp
+
+  ;; Evil
+  (use-package evil
+    :ensure t
+    :hook ((prog-mode text-mode conf-mode) . evil-local-mode)
+    :custom
+    (evil-undo-system 'undo-redo)
+    (evil-normal-state-cursor 'hollow)
+    (evil-emacs-state-cursor 'bar)
+    :config
+    (with-eval-after-load 'evil-maps
+      (define-key evil-motion-state-map (kbd ":") 'evil-repeat-find-char)
+      (define-key evil-motion-state-map (kbd ";") 'evil-ex)))
+
+  ;; Lispy
+  (use-package lispy)
   
-  )
+#+end_src
 
-(use-package nix-mode)
-(use-package fish-mode)
-(use-package haskell-mode)
+#+begin_src emacs-lisp
+  ;; Various prog-modes
+  (use-package nix-mode)
+  (use-package fish-mode)
+  (use-package haskell-mode)
+#+end_src
 
-;; Start emacs in a maximized window
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+#+begin_src emacs-lisp
+  ;; Keybinds
+  ;;; Copy and paste (this at least works on Linux/NixOS/Wayland/KDE Plasma 6 for most part)
+  (keymap-global-set "C-S-c" 'kill-ring-save)
+  (keymap-global-set "C-S-v" 'clipboard-yank)
 
-;;; Copy and paste (this at least works on Linux/NixOS/Wayland/KDE Plasma 6 for most part)
-(keymap-global-set "C-S-c" 'kill-ring-save)
-(keymap-global-set "C-S-v" 'clipboard-yank)
+  ;;; C-c C-k to eval buffer in elisp mode like CIDER
+  (define-key emacs-lisp-mode-map (kbd "C-c C-k") #'eval-buffer)
 
-(use-package envrc
-  :hook (after-init . envrc-global-mode))
+  ;; For ez wrapping of stuff in common delimiters
+  (global-set-key (kbd "M-[") 'insert-pair)
+  (global-set-key (kbd "M-{") 'insert-pair)
+  (global-set-key (kbd "M-\"") 'insert-pair)
 
-(use-package magit)
+#+end_src
 
-(add-to-list 'default-frame-alist '(font . "FiraCode Nerd Font Mono-10"))
-(set-face-attribute 'default t :font "FiraCode Nerd Font Mono-10")
+#+begin_src emacs-lisp
+  ;; Whatever packages
+  (use-package envrc
+    :demand t
+    :hook (after-init . envrc-global-mode))
 
-(use-package ivy
-  :custom
-  (ivy-use-virtual-buffers t)
-  (enable-recursive-minibuffers t)
-  :config
-  (ivy-mode 1))
+  (use-package magit)
 
-(use-package corfu
-  :custom
-  (corfu-auto t)
-  (corfu-quit-no-match 'separator)
-  :config
-  (global-corfu-mode))
+  (use-package ivy
+    :custom
+    (ivy-use-virtual-buffers t)
+    (enable-recursive-minibuffers t)
+    :config
+    (ivy-mode 1))
 
-(use-package eat)
+  (use-package corfu
+    :custom
+    (corfu-auto t)
+    (corfu-quit-no-match 'separator)
+    :config
+    (global-corfu-mode))
 
-(use-package projectile
-  :init (projectile-mode +1)
-  :bind (:map projectile-mode-map
-              ("C-c p" . projectile-command-map)
-	      ("C-c p x e" . 'eat-project-other-window))
-  :config (projectile-mode))
+  (use-package eat)
+
+  (use-package projectile
+    :init (projectile-mode +1)
+    :bind (:map projectile-mode-map
+                ("C-c p" . projectile-command-map)
+    	      ("C-c p x e" . 'eat-project-other-window))
+    :config (projectile-mode))
 
 
-(use-package which-key
-  :config (which-key-mode))
+  (use-package which-key
+    :config (which-key-mode))
 
-;;; Disable the system bell holy wow that's obnoxious with pgtk
-(setf ring-bell-function 'ignore)
+  ;; NeoTree
+  (use-package neotree
+    :ensure t
+    :bind (("<f8>" . neotree-toggle))
 
-;;; Change backup
-(setq backup-directory-alist '(("." . "~/.backups")))
+    :config
+    (setq neo-theme (if (display-graphic-p) 'icons 'arrow)
+  	neo-window-width 30
+  	neo-window-fixed-size nil
+  	projectile-switch-project-action 'neotree-projectile-action))
 
-;;; Disable prompt for git-controlled symlinks
-(setq vc-follow-symlinks t)
+  ;; Rainbow delimiters :3
+  (use-package rainbow-delimiters
+    :hook (prog-mode . rainbow-delimiters-mode)) 
 
-;;; Stop warning buffer from popping up for not-emergencies
-(setq warning-minimum-level :emergency)
+  (use-package flycheck
+    :init (global-flycheck-mode))
+
+  (use-package elcord)
+
+  ;; (use-package dashboard
+  ;;   :config (dashboard-setup-startup-hook)
+  ;;   :custom
+  ;;   (dashboard-banner-logo-title "what that emacsussy do")
+  ;;   (dashboard-items '((recents . 5)
+  ;; 		     (project . 5)))
+  ;;   (dashboard-icon-type 'all-the-icons)
+  ;;   (dashboard-set-file-icons t))
+  (use-package dashboard
+   :config (dashboard-setup-startup-hook)
+   :custom
+   (dashboard-center-content t)
+   (dashboard-projects-backend 'projectile))
+#+end_src
+
+#+begin_src emacs-lisp
+  ;; Lang specific stuff
+  (use-package cider
+    :hook
+    ;; Disable the ridiculous single ; comment indentation (in clojure-mode)
+    (clojure-mode . (lambda () (setq-local comment-column 0))))
+
+  ;;; Elpy
+  (use-package elpy
+    :ensure t
+    :init
+    (elpy-enable))
+
+#+end_src
+
+#+begin_src emacs-lisp
+  ;; LSP whack
+
+  (use-package lsp-mode
+    :hook (haskell-mode . lsp-deferred)
+    :commands (lsp lsp-deferred))
+
+  (use-package lsp-ivy
+    :commands lsp-ivy-workspace-symbol)
+
+  (use-package lsp-treemacs
+    :commands lsp-treemacs-errors-list)
+
+#+end_src
+
+#+begin_src emacs-lisp
 
 #+end_src
