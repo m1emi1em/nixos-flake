@@ -12,6 +12,11 @@
   };
 
   nixpkgs.overlays = with inputs; [
+    hyprpanel.overlay
     emacs-overlay.overlay
   ];
+  
+  # imports = [
+  #   inputs.hyprpanel.homeManagerModules.hyprpanel
+  # ];
 }
