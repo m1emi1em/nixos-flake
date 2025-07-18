@@ -33,16 +33,17 @@
   home-manager.users.emily.wayland.windowManager = {
     hyprland = {
       settings = {
-        monitor = [ ",highres@highrr,auto,1"];
+        monitor = [ ",highres@highrr,auto,1.5"];
         # env = [
         #   "AQ_DRM_DEVICES,/dev/dri/card2:/dev/dri/card1"
         # ];
-        #   xwayland = {
-        #     force_zero_scaling = true;
-        #   };
-        #   env = [
-        #     "GDK_SCALE,2"
-        #   ];
+        xwayland = {
+          force_zero_scaling = true;
+        };
+        env = [
+          "GDK_SCALE,1.5"
+          "XCURSOR_SIZE,32"
+        ];
       };
     };
   };
