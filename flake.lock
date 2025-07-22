@@ -31,17 +31,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1743910829,
-        "narHash": "sha256-91wtxhgH65CBHBhXhB2q8sTLMvm1J67FofouFtAdLk4=",
+        "lastModified": 1747683826,
+        "narHash": "sha256-T5yG0HM01QBnnhFqYtWwM/RS56yE/L9oOTr+IIgdRAM=",
         "ref": "refs/heads/main",
-        "rev": "8102e67e881e5020729425fab003dc5c515dd6c0",
-        "revCount": 22,
+        "rev": "99a2b24a6f66eb84bd0a1903ccda1fc1fbd2e3f1",
+        "revCount": 24,
         "type": "git",
-        "url": "http://emerald.localdomain:32768/m1emi1em/bb-scripts.git"
+        "url": "file:///home/emily/dev/bb-scripts"
       },
       "original": {
         "type": "git",
-        "url": "http://emerald.localdomain:32768/m1emi1em/bb-scripts.git"
+        "url": "file:///home/emily/dev/bb-scripts"
       }
     },
     "catppuccin": {
