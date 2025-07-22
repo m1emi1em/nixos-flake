@@ -179,10 +179,21 @@
   ;;   (dashboard-icon-type 'all-the-icons)
   ;;   (dashboard-set-file-icons t))
   (use-package dashboard
-   :config (dashboard-setup-startup-hook)
-   :custom
-   (dashboard-center-content t)
-   (dashboard-projects-backend 'projectile))
+    :config
+    (dashboard-setup-startup-hook)
+    (setq dashboard-banner-logo-title "what that emacsussy do"
+  	dashboard-center-content t
+  	dashboard-projects-backend 'projectile)
+    (setq dashboard-items
+  	'((recents . 5)
+  	  (projects . 5)))
+    ;;(setq dashboard-icon-type 'all-the-icons
+  	;;dashboard-set-file-icons t)
+    :bind ("C-c d" . (lambda ()
+  		     (interactive)
+		       (progn
+  			 (delete-other-windows)
+  			 (dashboard-open)))))
 #+end_src
 
 #+begin_src emacs-lisp
@@ -197,6 +208,7 @@
     :ensure t
     :init
     (elpy-enable))
+
 
 #+end_src
 
