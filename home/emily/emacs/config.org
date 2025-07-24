@@ -143,11 +143,12 @@
     :init (projectile-mode +1)
     :bind (:map projectile-mode-map
   	      ("C-c p" . projectile-command-map)
-	      ("C-c p x e" . 'eat-project-other-window)
+  	      ("C-c p x e" . 'eat-project-other-window)
   	      ("C-c p J" . 'justl))
     :config (projectile-mode))
 
   (use-package justl)
+  (use-package just-mode)
 
   (use-package which-key
     :config (which-key-mode))
