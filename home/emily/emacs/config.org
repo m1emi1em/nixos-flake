@@ -142,10 +142,12 @@
   (use-package projectile
     :init (projectile-mode +1)
     :bind (:map projectile-mode-map
-                ("C-c p" . projectile-command-map)
-    	      ("C-c p x e" . 'eat-project-other-window))
+  	      ("C-c p" . projectile-command-map)
+	      ("C-c p x e" . 'eat-project-other-window)
+  	      ("C-c p J" . 'justl))
     :config (projectile-mode))
 
+  (use-package justl)
 
   (use-package which-key
     :config (which-key-mode))
@@ -191,7 +193,7 @@
   	;;dashboard-set-file-icons t)
     :bind ("C-c d" . (lambda ()
   		     (interactive)
-		       (progn
+  		       (progn
   			 (delete-other-windows)
   			 (dashboard-open)))))
 #+end_src
