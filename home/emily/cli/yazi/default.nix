@@ -5,7 +5,7 @@ in
 {
   programs.yazi = {
     enable = true;
-    theme = importTOML ./catppuccin-mocha-pink.toml;
+    #theme = importTOML ./catppuccin-mocha-pink.toml;
     plugins = {
       git = pkgs.yaziPlugins.git;
     };

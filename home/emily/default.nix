@@ -5,7 +5,6 @@
     ./emacs
     ./cli
     ./gui
-    inputs.catppuccin.homeModules.catppuccin
   ];
 
   home = {

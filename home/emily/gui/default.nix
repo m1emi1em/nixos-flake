@@ -36,6 +36,7 @@ let
 in
 {
   imports = [
+    ./catppuccin.nix
     ./firefox.nix
     ./gaming
     ./hyprland
