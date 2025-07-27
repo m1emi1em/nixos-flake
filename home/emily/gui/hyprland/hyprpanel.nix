@@ -1,6 +1,7 @@
 { inputs, ...}: {
   imports = [
     ./modules/clock.nix
+    ./modules/network.nix
   ];
   programs.hyprpanel = {
     enable = true;
