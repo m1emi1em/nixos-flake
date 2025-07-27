@@ -1,4 +1,7 @@
 { inputs, ...}: {
+  imports = [
+    ./modules/clock.nix
+  ];
   programs.hyprpanel = {
     enable = true;
     # systemd.enable = true;
