@@ -51,13 +51,11 @@
     programs = {
       hyprpanel = {
         settings = {
-          layout = {
-            "bar.layouts" = {
-              "0" = {
-                left = [ "dashboard" "workspaces" ];
-                middle = [ "windowtitle" ];
-                right = [  "systray" "network" "weather" "volume" "battery" "clock" "notifications"];
-              };
+          bar.layouts = {
+            "0" = {
+              left = [ "dashboard" "workspaces" ];
+              middle = [ "windowtitle" ];
+              right = [  "systray" "network" "weather" "volume" "battery" "clock" "notifications"];
             };
           };
         };

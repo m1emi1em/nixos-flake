@@ -99,18 +99,16 @@
     programs = {
       hyprpanel = {
         settings = {
-          layout = {
-            "bar.layouts" = {
-              "0" = {
-                left = [ "dashboard" "workspaces" "media"];
-                middle = [ "windowtitle" ];
-                right = [  "systray" "network" "weather" "volume" "clock" "notifications"];
-              };
-              "1" = {
-                left = ["workspaces"];
-                middle = ["windowtitle"];
-                right = ["clock"];
-              };
+          "bar.layouts" = {
+            "0" = {
+              left = [ "dashboard" "workspaces" "media"];
+              middle = [ "windowtitle" ];
+              right = [  "systray" "network" "weather" "volume" "clock" "notifications"];
+            };
+            "1" = {
+              left = ["workspaces"];
+              middle = ["windowtitle"];
+              right = ["clock"];
             };
           };
         };
