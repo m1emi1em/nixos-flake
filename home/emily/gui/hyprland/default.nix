@@ -72,6 +72,23 @@ in
             "layout" = "dwindle";
           };
 
+          # Slightly stolen from Luna's confs
+          windowrulev2 = let
+            mkRules = matcher: rules:
+              map (rule: "${rule},${matcher}") rules;
+            mkClassRules = windowClass: rules:
+              mkRules "class:^(${windowClass})$" rules;
+          in
+            [] ++
+            (mkClassRules "xwaylandvideobridge" [
+              "maxsize 1 1"
+              "noanim"
+              "noblur"
+              "nofocus"
+              "noinitialfocus"
+              "opacity 0.0 override"
+            ]);
+
           decoration = {
             rounding = 0;
             active_opacity = 1.0;
