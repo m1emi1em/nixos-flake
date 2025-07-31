@@ -10,7 +10,7 @@
       "$mainMod, Q, killactive,"
       "$mainMod ALT Control_L, backspace, exec, uwsm stop"
       # "$mainMod, E, exec, $fileManager"
-      # "$mainMod, V, togglefloating,"
+      "$mainMod, V, togglefloating,"
       "$mainMod, R, exec, uwsm app -- $menu"
 
 
