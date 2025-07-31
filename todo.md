@@ -7,7 +7,7 @@ This is non-exhaustive list of things I'd like to look into or do with this flak
 - Stylix
 - Secrets management via agenix
   - Syncthing, SSH keys
-- More general system modules rather than fixed ones specifically for my laptop and desktop
+- More general system modules rather than fixed ones specifically for my current laptop and desktop
 
 ## Features/Configurations
 
@@ -15,6 +15,7 @@ This is non-exhaustive list of things I'd like to look into or do with this flak
 - Disk health monitoring
 - Radicale/Etebase+Etesync for CalDAV syncing of tasks
 - Declarative Firefox configuration
+- Might migrate to Forgejo from Gitea idk
 
 # To Fix
 
