@@ -2,6 +2,7 @@
 let
   cliPackages = with pkgs; [
     charm-freeze
+    cloc
     duf # util
     hyfetch
     irssi
