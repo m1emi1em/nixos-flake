@@ -19,7 +19,7 @@
     agenix.url = "github:ryantm/agenix";
 
     bb-scripts = {
-      url ="git+file:///home/emily/dev/bb-scripts";
+      url ="git+http://emerald.localdomain:32768/m1emi1em/bb-scripts.git";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
