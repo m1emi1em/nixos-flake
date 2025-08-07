@@ -1,4 +1,4 @@
-{inputs', pkgs, ... }:
+{inputs', inputs, pkgs, ... }:
 let
   cliPackages = with pkgs; [
     charm-freeze
@@ -18,6 +18,7 @@ in
   # Because there's dubious value in having hledger or irssi, just as an example, on a server.
   # (Altho in the case of hledger it could also open up the avenue of having some kind of webapp interface I could access on my phone too ngl...)
   imports = [
+    ./comma.nix
     ./direnv.nix
     ./fish.nix
     ./git.nix
