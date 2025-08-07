@@ -35,8 +35,8 @@ in
     let
       terminal = "kitty";
       fileManager = "dolphin";
-      # appLauncher = "wofi --show drun";
-      appLauncher = "$(wofi --show drun --define=drun-print_desktop_file=true)";
+      # appLauncher = "$(wofi --show drun --define=drun-print_desktop_file=true)";
+      appLauncher = "$(wofi --show drun --define=drun-print_command=true)";
       screenshotTool = "grimblastr";
       uwsmWrap = command: "uwsm app -- " + command;
       uwsmWrapAll = list: map uwsmWrap list;
