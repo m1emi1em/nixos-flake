@@ -92,8 +92,23 @@
       "10, monitor:DP-3"
     ];
 
-
     monitor = [ "DP-2, 1920x1080@144, 0x0, 1" "DP-3, 1920x1080@144, auto, 1, transform, 3"];
+
+    windowrulev2 = let
+      mkRules = matcher: rules:
+        map (rule: "${rule},${matcher}") rules;
+      mkClassRules = windowClass: rules:
+        mkRules "class:^(${windowClass})$" rules;
+      mkOsuRules = rules:
+        mkClassRules "osu!" rules;
+    in
+      (mkOsuRules [
+        "float"
+        "size 1366 768"
+        "monitor DP-2"
+        "workspace 2"
+        "move 100%-w-5 50"
+      ]);
   };
   home-manager.users.emily = {
     programs = {
