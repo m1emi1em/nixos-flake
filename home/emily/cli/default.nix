@@ -4,6 +4,7 @@ let
     charm-freeze
     cloc
     duf # util
+    glow
     hyfetch
     irssi
     pandoc
