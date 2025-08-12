@@ -6,7 +6,7 @@ This is non-exhaustive list of things I'd like to look into or do with this flak
 
 - Stylix
 - Secrets management via agenix
-  - Syncthing, SSH keys
+- SSH configs
 - More general system modules rather than fixed ones specifically for my current laptop and desktop
 
 ## Features/Configurations
