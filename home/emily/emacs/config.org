@@ -216,6 +216,9 @@
     :init
     (elpy-enable))
 
+  (use-package slime
+    :config (setq inferior-lisp-program "sbcl"))
+
 
 #+end_src
 
