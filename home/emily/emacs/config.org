@@ -200,6 +200,10 @@
 #+end_src
 
 #+begin_src emacs-lisp
+  ;; Lisp stuff
+  (use-package smartparens)
+  (use-package evil-cleverparens)
+
   ;; Lang specific stuff
   (use-package cider
     :hook
