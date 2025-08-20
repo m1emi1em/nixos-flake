@@ -210,7 +210,7 @@
     ;; Disable the ridiculous single ; comment indentation (in clojure-mode)
     (clojure-mode . (lambda () (setq-local comment-column 0))))
 
-  ;;; Elpy
+    ;;; Elpy
   (use-package elpy
     :ensure t
     :init
@@ -219,6 +219,8 @@
   (use-package slime
     :config (setq inferior-lisp-program "sbcl"))
 
+  (use-package fennel-mode)
+  ;; (use-package fennel-ls)
 
 #+end_src
 
