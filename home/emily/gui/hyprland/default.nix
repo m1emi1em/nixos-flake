@@ -87,9 +87,6 @@ in
               "nofocus"
               "noinitialfocus"
               "opacity 0.0 override"
-            ]) ++
-            (mkClassRules "Nsxiv" [ # So nsxiv actually starts in tiled mode
-              "tile"
             ]);
 
           decoration = {

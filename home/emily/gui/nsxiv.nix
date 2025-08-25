@@ -68,4 +68,6 @@ in
     "Nsxiv.bar.background" = "${props.bar.bg}";
     "Nsxiv.bar.foreground" = "${props.bar.fg}";
   };
+
+  wayland.windowManager.hyprland.settings.windowrulev2 = ["tile,class:^(Nsxiv)$"];
 }
