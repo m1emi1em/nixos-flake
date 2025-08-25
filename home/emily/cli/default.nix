@@ -5,7 +5,6 @@ let
     cloc
     duf # util
     glow
-    hyfetch
     irssi
     pandoc
     pfetch # put in file
@@ -24,6 +23,7 @@ in
     ./fish.nix
     ./git.nix
     ./hledger.nix
+    ./hyfetch.nix
     ./nvim.nix
     ./pfetch.nix
     ./ssh.nix
