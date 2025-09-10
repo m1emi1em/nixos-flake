@@ -221,6 +221,7 @@
 
   (use-package fennel-mode)
   ;; (use-package fennel-ls)
+  (use-package rust-mode)
 
 #+end_src
 
