@@ -32,6 +32,8 @@ let
     libnotify
     wl-clipboard-rs
 
+    qpdf
+
   ];
 in
 {
