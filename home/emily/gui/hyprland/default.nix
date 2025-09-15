@@ -158,10 +158,6 @@ in
             };
           };
 
-          gestures = {
-            workspace_swipe = false;
-          };
-
         };
 
         # Bite me
