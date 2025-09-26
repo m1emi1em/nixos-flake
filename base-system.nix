@@ -191,6 +191,7 @@
 
     package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
+  hardware.opentabletdriver.enable = true;
 
   services.ratbagd.enable = true;
 
