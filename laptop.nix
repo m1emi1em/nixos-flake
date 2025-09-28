@@ -4,6 +4,10 @@
     hostName = "quartz";
   };
 
+  environment.systemPackages = with pkgs; [
+    brightnessctl
+  ];
+
   services = {
     automatic-timezoned.enable = true;
     supergfxd.enable = true;

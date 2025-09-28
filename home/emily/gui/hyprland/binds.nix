@@ -29,6 +29,10 @@
 
       "$mainMod Control_L SHIFT, L, exec, uwsm app -- hyprlock" # Lock screen
 
+      # Brightness Controls
+      ",XF86MonBrightnessDown, exec, brightnessctl s 10%-"
+      ",XF86MonBrightnessUp, exec, brightnessctl s +10%"
+
       # Move between windows
       "$mainMod, H, movefocus, l"
       "$mainMod, L, movefocus, r"
