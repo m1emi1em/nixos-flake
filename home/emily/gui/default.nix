@@ -46,6 +46,7 @@ in
     ./kitty.nix
     ./mpd.nix
     ./nsxiv.nix
+    ./opentabletdriver
   ];
   home = {
     packages = guiPackages;
