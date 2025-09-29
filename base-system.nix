@@ -162,9 +162,11 @@
   # feesh
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
-  networking.networkmanager.enable = true;
-  
-  # pipewire
+  networking = {
+    networkmanager.enable = true;
+    nameservers = ["8.8.8.8" "8.8.4.4"];
+  };
+      # pipewire
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
