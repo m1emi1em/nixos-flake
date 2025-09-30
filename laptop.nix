@@ -57,9 +57,9 @@
         settings = {
           bar.layouts = {
             "0" = {
-              left = [ "dashboard" "workspaces" ];
+              left = ["workspaces" ];
               middle = [ "windowtitle" ];
-              right = [  "systray" "network" "weather" "volume" "battery" "clock" "notifications"];
+              right = [ "systray" "network" "volume" "battery" "clock" "notifications"];
             };
           };
         };
