@@ -20,7 +20,7 @@
         bar = {
           border_radius = "0.0em";
           outer_spacing = "0.0em";
-          floating = true;
+          floating = false;
           buttons = {
             innerRadiusMultiplier = "0.0";
             radius = "0.0em";
