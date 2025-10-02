@@ -59,7 +59,7 @@
             "0" = {
               left = ["workspaces" ];
               middle = [ "windowtitle" ];
-              right = [ "systray" "network" "volume" "battery" "clock" "notifications"];
+              right = [ "systray" "volume" "battery" "clock" "notifications"];
             };
           };
         };
