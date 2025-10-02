@@ -1,12 +1,15 @@
-{ inputs, ...}: {
+{ lib, inputs, ...}: let
+  inherit (lib.trivial) importJSON;
+in {
   imports = [
     ./modules
   ];
   programs.hyprpanel = {
     enable = true;
     settings = {
-      theme = {
-        name = "catppuccin_mocha";
+      theme = (importJSON ./catppuccin_mocha.json) // {
+        # name = "catppuccin_mocha";
+        
         font = {
           name = "Noto Sans Mono";
           size = "0.8rem";
