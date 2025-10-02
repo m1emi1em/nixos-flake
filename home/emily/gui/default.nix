@@ -25,7 +25,7 @@ let
 
     # godot_4 # gui
     # aseprite # gui
-    reaper # gui
+    # reaper # gui
 
     playerctl
 
