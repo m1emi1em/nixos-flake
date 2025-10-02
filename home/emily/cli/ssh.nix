@@ -8,13 +8,13 @@
       "m1-gitea" = {
         hostname = "localhost";
         user = "git";
+        port = 32769;
         identityFile = "~/.ssh/id_gh";
         identitiesOnly = true;
       };
       "m1-github" = {
         hostname = "github.com";
         user = "git";
-        port = 32769;
         identityFile = "~/.ssh/id_gh";
         identitiesOnly = true;
       };
