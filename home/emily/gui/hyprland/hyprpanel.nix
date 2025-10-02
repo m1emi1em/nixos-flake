@@ -4,15 +4,12 @@
   ];
   programs.hyprpanel = {
     enable = true;
-    # systemd.enable = true;
     settings = {
-
-
       theme = {
         name = "catppuccin_mocha";
         font = {
           name = "Noto Sans Mono";
-          size = "1.0rem";
+          size = "0.8rem";
         };
 
         # I Fucking Hate Rounded Courners Fuck Off
@@ -25,7 +22,6 @@
             innerRadiusMultiplier = "0.0";
             radius = "0.0em";
             workspaces.pill.radius = "1.9rem";
-
           };
           menus = {
             border.radius = "0.0em";
@@ -47,21 +43,6 @@
         notification.border_radius = "0.0em";
         osd.radius = "0.0em";
       };
-
-    #   layout = {
-    #     "bar.layouts" = {
-    #       "0" = {
-    #         left = [ "dashboard" "workspaces" ];
-    #         middle = [ "windowtitle" ];
-    #         right = [  "systray" "network" "weather" "volume" "clock" "notifications"];
-    #       };
-    #       "1" = {
-    #         left = ["workspaces"];
-    #         middle = ["windowtitle"];
-    #         right = [];
-    #       };
-    #     };
-    #   };
     };
   };
 }
