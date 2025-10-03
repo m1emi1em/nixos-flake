@@ -1,12 +1,20 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 let
   themeName = "catppuccin-mocha-pink";
   kbLayouts = {
+    us = "keyboard-us";
     intl = "keyboard-us-altgr-intl";
     jp = "mozc";
     zh-cn = "pinyin";
     zh-tw = "rime";
   };
+  layoutGroups = with kbLayouts; [
+    [intl jp zh-cn]
+  ];
+  inherit (builtins) toString elemAt;
+  inherit (lib.lists) imap0 imap1;
+  inherit (lib) foldl;
+  inherit (lib.attrsets) mergeAttrsList recursiveUpdate;
 in
 {
   i18n = {
@@ -19,33 +27,47 @@ in
           fcitx5-mozc
           fcitx5-gtk
           catppuccin-fcitx5
+          fcitx5-chinese-addons
+
           # fcitx5-chewing
           # fcitx5-rime
           # rime-data
-          fcitx5-chinese-addons
         ];
         settings = {
-          inputMethod = {
-            GroupOrder."0" = "Default";
+          inputMethod = let
+            makeLayoutItem = gIdx: idx: itm:
+              {
+                "Groups/${toString gIdx}/Items/${toString idx}".Name = itm;
+              };
 
-            "Groups/0" = {
-              Name = "Default";
-              "Default Layout" = "us";
-              "DefaultIM" = "us";
+            makeGroup = grpIdx: items: let
+                groupIndex = toString grpIdx;
+                groupName = "Group ${groupIndex}";
+                defaultLayoutIM = elemAt items 0;
+                processedItems = imap0 (j: jtm: makeLayoutItem grpIdx j jtm) items;
+              in {
+                GroupOrder."${groupIndex}" = groupName;
+
+                "Groups/${groupIndex}" = {
+                  Name = groupName;
+                  "Default Layout" = defaultLayoutIM;
+                  "DefaultIM" = elemAt items 1;
+                };
+              } // mergeAttrsList processedItems;
+
+            defaultFallbackLayout = {
+              GroupOrder."0" = "Default";
+              "Groups/0" = with kbLayouts; {
+                Name = "Default";
+                "Default Layout" = us;
+                "DefaultIM" = us;
+              };
+              "Groups/0/Items/0".Name = "keyboard-us";
             };
-            "Groups/0/Items/0".Name = "keyboard-us";
 
-            GroupOrder."1" = "International";
-            "Groups/1" = {
-              Name = "International";
-              "Default Layout" = kbLayouts.intl;
-              "DefaultIM" = "mozc";
-            };
+          in
+            foldl recursiveUpdate defaultFallbackLayout (imap1 makeGroup layoutGroups);
 
-            "Groups/1/Items/0".Name = kbLayouts.intl;
-            "Groups/1/Items/1".Name = kbLayouts.jp;
-            "Groups/1/Items/2".Name = kbLayouts.zh-cn;
-          };
           addons = {
             # Get rid of that obnoxious popup that conflicts with some emacs bind
             clipboard.globalSection = {
