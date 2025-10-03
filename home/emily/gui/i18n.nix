@@ -4,6 +4,8 @@ let
   kbLayouts = {
     intl = "keyboard-us-altgr-intl";
     jp = "mozc";
+    zh-cn = "pinyin";
+    zh-tw = "rime";
   };
 in
 {
@@ -17,6 +19,10 @@ in
           fcitx5-mozc
           fcitx5-gtk
           catppuccin-fcitx5
+          # fcitx5-chewing
+          # fcitx5-rime
+          # rime-data
+          fcitx5-chinese-addons
         ];
         settings = {
           inputMethod = {
@@ -38,8 +44,7 @@ in
 
             "Groups/1/Items/0".Name = kbLayouts.intl;
             "Groups/1/Items/1".Name = kbLayouts.jp;
-
-
+            "Groups/1/Items/2".Name = kbLayouts.zh-cn;
           };
           addons = {
             # Get rid of that obnoxious popup that conflicts with some emacs bind
