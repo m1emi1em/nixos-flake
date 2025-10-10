@@ -199,7 +199,7 @@
 
   services = {
     syncthing = {
-      enable = true;
+      # enable = true;
       openDefaultPorts = true;
       settings = {
         devices = {
