@@ -21,6 +21,9 @@
       "$mainMod SHIFT, P, pin, active"
       "$mainMod, F, fullscreenstate, 1"
 
+      # For games that we want "true" fullscreen for
+      "$mainMod SHIFT, F, fullscreenstate, 2"
+
       
       "$mainMod, N, exec, ${toggleNotifs}" # Toggle notifications
       # "$mainMod SHIFT, N, exec, uwsm app -- swaync-client -d" # Toggle DND
