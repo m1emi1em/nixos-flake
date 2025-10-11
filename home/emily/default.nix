@@ -5,6 +5,7 @@
     ./emacs
     ./cli
     ./gui
+    ./services/syncthing.nix
   ];
 
   home = {

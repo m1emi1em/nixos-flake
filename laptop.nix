@@ -17,19 +17,42 @@
       enableUserService = true;
     };
     
-    syncthing = {
-      settings = {
-        devices = {
-          "emerald" = { id = "INKFIAW-55AWZP4-WSXYO7Z-YU2GBBU-QHYZMOD-YEZOHAI-N7V7UFT-NYG4RQC"; };
-        };
+    # syncthing = {
+    #   settings = {
+    #     devices = {
+    #       "emerald" = { id = "INKFIAW-55AWZP4-WSXYO7Z-YU2GBBU-QHYZMOD-YEZOHAI-N7V7UFT-NYG4RQC"; };
+    #     };
 
-        folders = {
-          "Obsidian" = {
-            id = "obsidian-vaults-current";
-            path = "/mnt/Vaults/Current";
-            devices = ["Bismuth" "emerald"];
-          };
-        };
+    #     # folders = {
+        #   "Obsidian" = {
+        #     id = "obsidian-vaults-current";
+        #     path = "/mnt/Vaults/Current";
+        #     devices = ["Bismuth" "emerald"];
+        #   };
+        # };
+    # home-manager
+
+
+# {
+#           "Obsidian" = {
+#             id = "obsidian-vaults-current";
+#             path = "/mnt/BiggusDiskus/Vaults/Current";
+#             devices = ["Bismuth" "quartz"];
+#           };
+#         };
+        
+  #     };
+  #   };
+  };
+
+  home-manager.users.emily.services.syncthing = let
+    vaultDirectory = "/home/emily/Documents/vaults";
+  in {
+    settings.folders = {
+      "Current Vaults" = {
+        id = "obsidian-vaults-current";
+        path = "${vaultDirectory}/current";
+        devices = ["Bismuth"];
       };
     };
   };
